@@ -1,0 +1,611 @@
+:root {
+    --dark-blue: #001f3f;
+    --medium-blue: #003366;
+    --light-blue: #60a5fa;
+    --slate: #a8b2d1;
+    --light-slate: #ccd6f6;
+    --white: #e6f1ff;
+    --steel-blue: #8B9EB8; /* Custom color for titles */
+}
+
+body {
+    font-family: 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
+    background-color: transparent; /* Make body background transparent */
+    color: var(--slate);
+    margin: 0;
+    padding: 0;
+}
+
+#vanta-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place it behind all other content */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(0, 31, 63, 0.85); /* Dark Blue with transparency */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--light-blue);
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end; /* Align nav items to the right */
+    align-items: center;
+}
+
+.logo {
+    color: var(--light-blue);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin-left: 20px;
+}
+
+nav a {
+    color: var(--light-slate);
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--light-blue);
+}
+
+main {
+    padding-top: 100px; /* Space for the fixed header */
+}
+
+/* Welcome Section */
+#welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 100px); /* Full viewport height minus header */
+    padding: 0 50px;
+}
+
+.welcome-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.company-name-wrapper {
+    animation: reveal-from-center 1s ease-in-out 0.2s forwards;
+    clip-path: circle(0% at 50% 50%);
+}
+
+@keyframes reveal-from-center {
+    to {
+        clip-path: circle(150% at 50% 50%);
+    }
+}
+
+.company-name {
+    font-size: 3rem;
+    color: var(--light-blue);
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.welcome-text-left,
+.welcome-text-right {
+    flex-basis: 30%;
+    padding: 30px;
+    background-color: rgba(0, 31, 63, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* Support for Safari */
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.welcome-text-left {
+    text-align: right;
+    animation: slide-in-left 1s ease-out 0.7s forwards;
+    opacity: 0;
+}
+
+.welcome-text-right {
+    text-align: left;
+    animation: slide-in-right 1s ease-out 0.7s forwards;
+    opacity: 0;
+}
+
+@keyframes slide-in-left {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in-right {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.welcome-content h2 {
+    font-size: 1.8rem;
+    color: var(--light-blue);
+    margin-bottom: 15px;
+}
+
+.welcome-content p {
+    font-size: 1rem;
+    color: var(--light-slate);
+    line-height: 1.6;
+}
+
+/* Estilos para la sección de Proyectos (Carrusel 3D) */
+#proyectos {
+    position: relative;
+    padding: 120px 0;
+    text-align: center;
+    background: radial-gradient(circle, rgba(1, 26, 57, 0.9) 0%, rgba(0, 15, 36, 0.95) 100%);
+    padding-bottom: 250px;
+}
+
+#desarrolladores {
+    padding: 80px 0;
+    text-align: center;
+    background: var(--dark-blue);
+}
+
+.desarrolladores-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.desarrollador-card {
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 300px;
+    position: relative;
+}
+
+.flag-emoji {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+}
+
+.desarrollador-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.desarrollador-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.desarrollador-card h3 {
+    margin-bottom: 10px;
+    color: var(--dark-blue);
+}
+
+.desarrollador-card p {
+    color: var(--dark-blue);
+    margin-bottom: 15px;
+}
+
+.desarrollador-card p strong {
+    color: var(--dark-blue);
+}
+
+.portfolio-link {
+    display: inline-block;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.portfolio-link:hover {
+    background-color: var(--medium-blue);
+}
+
+.carousel-wrapper {
+    position: relative;
+  perspective: 1000px;
+  width: 100%;
+  height: 250px; /* Reducida la altura */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0; /* Eliminado el margen superior para acercar a los botones */
+}
+
+.carousel-container {
+  position: relative;
+  width: 300px; /* Ancho de una tarjeta */
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1); /* Transición más suave */
+}
+
+.project-card {
+  background-color: rgba(17, 34, 51, 0.75); /* Semi-transparent dark blue */
+  border: 1px solid var(--light-blue);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.project-image {
+  overflow: hidden;
+  border-radius: 15px 15px 0 0;
+}
+
+.project-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: grayscale(70%);
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+  filter: grayscale(0%);
+}
+
+.project-content {
+  padding: 20px;
+  position: relative;
+}
+
+.project-content h3 {
+  color: var(--light-slate);
+  margin-bottom: 10px;
+}
+
+.project-content p {
+  color: var(--slate);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.project-tech {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-tech span {
+  background-color: var(--medium-blue);
+  color: var(--light-slate);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+}
+
+.project-links {
+  margin-top: 15px;
+  display: flex;
+  gap: 15px;
+}
+
+.project-links a {
+  color: var(--light-slate);
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.project-links a:hover {
+  color: var(--light-blue);
+}
+
+.carousel-item {
+  position: absolute;
+  width: 300px;
+  height: auto;
+  backface-visibility: hidden; /* Oculta la cara trasera */
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+}
+
+.carousel-item h3 {
+  margin: 15px 0 5px;
+  color: var(--white);
+}
+
+.carousel-item p {
+  font-size: 0.9rem;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  z-index: 10;
+  pointer-events: none; /* Evita que el contenedor intercepte clics */
+}
+
+.nav-btn {
+  background-color: rgba(96, 165, 250, 0.5); /* light-blue con transparencia */
+  color: var(--dark-blue);
+  border: none;
+  padding: 10px;
+  font-size: 1.2rem; /* Reducido para un look más fino */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  pointer-events: all; /* Permite clics en los botones */
+  width: 40px; /* Ancho y alto fijos */
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#prev-btn {
+  margin-left: -20px; /* Superposición ligera */
+}
+
+#next-btn {
+  margin-right: -20px; /* Superposición ligera */
+}
+
+.nav-btn:hover {
+  background-color: var(--light-blue); /* Opaco al pasar el ratón */
+  transform: scale(1.1);
+}
+
+
+/* Footer Styles */
+footer {
+    background-color: var(--medium-blue);
+    padding: 40px 50px;
+    color: var(--slate);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.about-us h3, .contact-us h3 {
+    color: var(--white);
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.about-us p {
+    max-width: 400px;
+    line-height: 1.6;
+}
+
+.contact-us .contact-link {
+    display: block;
+    color: var(--slate);
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.contact-us .contact-link:hover {
+    color: var(--light-blue);
+}
+
+/* Contact Section Styles */
+#contacto {
+    padding: 80px 50px;
+    text-align: center;
+    background: var(--dark-blue);
+}
+
+#contacto .section-title {
+    color: var(--light-blue);
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+#contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid var(--light-slate);
+    background-color: var(--medium-blue);
+    color: var(--white);
+    font-family: inherit;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+#contact-form input::placeholder,
+#contact-form textarea::placeholder {
+    color: var(--slate);
+}
+
+#contact-form button {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+}
+
+#contact-form button:hover {
+    background-color: var(--white);
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid var(--light-slate);
+    padding-top: 20px;
+    font-size: 14px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.popup-content {
+    background-color: #fff;
+    color: #333;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Arial', sans-serif;
+}
+
+.popup.show {
+    display: flex;
+}
+
+.popup-content {
+    background-color: var(--dark-blue);
+    padding: 20px 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--light-blue);
+}
+
+.loading-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--light-blue);
+    margin: 0 5px;
+    animation: dance 1.5s infinite ease-in-out;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes dance {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.popup-content p {
+    margin: 0;
+    font-size: 18px;
+    color: var(--light-slate);
+}
+
+/* Animaciones para la aparición y desaparición del popup */
+@keyframes fadeIn {
+    from {
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+    }
+    to {
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+    }
+}
