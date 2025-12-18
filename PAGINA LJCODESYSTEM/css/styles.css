@@ -14,6 +14,7 @@ body {
     color: var(--slate);
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 #vanta-bg {
@@ -178,6 +179,14 @@ main {
     background: radial-gradient(circle, rgba(1, 26, 57, 0.9) 0%, rgba(0, 15, 36, 0.95) 100%);
     padding-bottom: 250px;
 }
+
+.contact-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 
 #desarrolladores {
     padding: 80px 0;
@@ -459,6 +468,126 @@ footer {
     background: var(--dark-blue);
 }
 
+.contact-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap; /* Para que se ajuste en pantallas pequeñas */
+}
+
+
+
+.contact-left,
+.contact-right {
+  flex: 0 0 auto;
+  min-width: 300px;
+}
+
+.contact-cards {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.social-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.social-list a {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--medium-blue);
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.social-list a:hover {
+  transform: scale(1.05);
+  background: var(--light-blue);
+  color: var(--dark-blue);
+}
+.card {
+  width: 190px;
+  height: 254px;
+  background: var(--medium-blue);
+  border-radius: 15px;
+  box-shadow: 1px 5px 60px 0px #100a886b;
+  margin: 20px 0;
+}
+
+.card .card-border-top {
+  width: 60%;
+  height: 3%;
+  background: var(--light-blue);
+  margin: auto;
+  border-radius: 0px 0px 15px 15px;
+}
+
+.card span {
+  font-weight: 600;
+  color: var(--white);
+  text-align: center;
+  display: block;
+  padding-top: 10px;
+  font-size: 16px;
+}
+
+.card .job {
+  font-weight: 400;
+  color: var(--white);
+  display: block;
+  text-align: center;
+  padding-top: 3px;
+  font-size: 12px;
+}
+
+.card .img {
+  width: 70px;
+  height: 80px;
+  background: var(--light-blue);
+  border-radius: 15px;
+  margin: auto;
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card .img i {
+  font-size: 36px;
+  color: var(--white);
+}
+
+.card button {
+  padding: 8px 25px;
+  display: block;
+  margin: auto;
+  border-radius: 8px;
+  border: none;
+  margin-top: 30px;
+  background: var(--light-blue);
+  color: var(--dark-blue);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background: var(--white);
+}
+
 #contacto .section-title {
     color: var(--light-blue);
     font-size: 2.5rem;
@@ -609,3 +738,139 @@ footer {
         backdrop-filter: blur(5px);
     }
 }
+
+/* Colores y animaciones para la tarjeta de las redes*/
+.contact-right .card {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background: lightgrey;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition: all 1s ease-in-out;
+  border: 2px solid rgb(255, 255, 255);
+}
+.contact-right .background {
+  position: absolute;
+  inset: 0;
+  background-color: #4158D0;
+  background-image: linear-gradient(43deg, #0029f5 0%, #7779f5 46%, #79f6ff 100%);
+}
+.contact-right .logo {
+  position: absolute;
+  right: 50%;
+  bottom: 50%;
+  transform: translate(50%, 50%);
+  transition: all 0.6s ease-in-out;
+  opacity: 1;
+  font-size: 1.3em;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 3px;
+}
+.contact-right .logo .logo-svg {
+  fill: white;
+  width: 30px;
+  height: 30px;
+}
+.contact-right .icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+.contact-right .icon .svg {
+  fill: rgba(255, 255, 255, 0.797);
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+}
+.contact-right .box {
+  position: absolute;
+  padding: 10px;
+  text-align: right;
+  background: rgba(255, 255, 255, 0.389);
+  border-top: 2px solid rgb(255, 255, 255);
+  border-right: 1px solid white;
+  border-radius: 10% 13% 42% 0%/10% 12% 75% 0%;
+  box-shadow: rgba(100, 100, 111, 0.364) -7px 7px 29px 0px;
+  transform-origin: bottom left;
+  transition: all 1s ease-in-out;
+}
+.contact-right .box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+.contact-right .box:hover .svg {
+  fill: white;
+}
+.contact-right .box1 {
+  width: 70%;
+  height: 70%;
+  bottom: -70%;
+  left: -70%;
+}
+.contact-right .box1::before {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #ff53d4 60%, #62c2fe 90%);
+}
+.contact-right .box1:hover::before {
+  opacity: 1;
+}
+.contact-right .box1:hover .icon .svg {
+  filter: drop-shadow(0 0 5px white);
+}
+.contact-right .box2 {
+  width: 50%;
+  height: 50%;
+  bottom: -50%;
+  left: -50%;
+  transition-delay: 0.2s;
+}
+.contact-right .box2::before {
+  background: radial-gradient(circle at 30% 107%, #585858 0%, #1b1b1b 90%);
+}
+.contact-right .box2:hover::before {
+  opacity: 1;
+}
+.contact-right .box2:hover .icon .svg {
+  filter: drop-shadow(0 0 5px white);
+}
+.contact-right .box3 {
+  width: 30%;
+  height: 30%;
+  bottom: -30%;
+  left: -30%;
+  transition-delay: 0.4s;
+}
+.contact-right .box3::before {
+  background: radial-gradient(circle at 30% 107%, #739efc 0%, #286ef1 90%);
+}
+.contact-right .box3:hover::before {
+  opacity: 1;
+}
+.contact-right .box3:hover .icon .svg {
+  filter: drop-shadow(0 0 5px white);
+}
+.contact-right .box4 {
+  width: 10%;
+  height: 10%;
+  bottom: -10%;
+  left: -10%;
+  transition-delay: 0.6s;
+}
+.contact-right .card:hover {
+  transform: scale(1.1);
+}
+.contact-right .card:hover .box {
+  bottom: -1px;
+  left: -1px;
+}
+.contact-right .card:hover .logo {
+  transform: translate(70px, -52px);
+  opacity: 0;
+  letter-spacing: 0px;
+}
+
