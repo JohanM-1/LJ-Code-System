@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Vanta.js background animation
+    /*
     try {
         if (typeof VANTA !== 'undefined') {
             VANTA.NET({
@@ -67,14 +68,30 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
         console.error("Vanta error:", error);
     }
+    */
     
-    // Carousel logic
-    const carousel = document.querySelector('.carousel-container');
+        const carousel = document.querySelector('.carousel-container');
     if (carousel) {
         const items = document.querySelectorAll('.carousel-item');
         const totalItems = items.length;
         let currentIndex = 0;
         const angle = totalItems > 0 ? 360 / totalItems : 0;
+        
+        // Calculate dynamic radius based on item width (approx 300px) and number of items
+        // r = w / (2 * tan(PI/n))
+        // Adding a bit of spacing (e.g., 40px gap) implies effective width of 340px
+        const itemWidth = 300; 
+        const gap = 40;
+        const effectiveWidth = itemWidth + gap;
+        let radius = 300; // Default fallback
+        
+        if (totalItems > 2) {
+            radius = Math.round( (effectiveWidth / 2) / Math.tan( Math.PI / totalItems ) );
+        } else if (totalItems === 1) {
+            radius = 0;
+        } else if (totalItems === 2) {
+            radius = 200; // Manual spacing for 2 items
+        }
 
         function updateCarousel() {
             const rotateY = -currentIndex * angle;
@@ -100,7 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initial setup
         items.forEach((item, index) => {
             const rotateY = index * angle;
-            item.style.transform = `rotateY(${rotateY}deg) translateZ(300px)`;
+            // Use the calculated radius
+            item.style.transform = `rotateY(${rotateY}deg) translateZ(${radius}px)`;
         });
     }
 

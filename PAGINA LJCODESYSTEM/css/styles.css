@@ -487,16 +487,18 @@ main {
     position: relative;
   perspective: 1000px;
   width: 100%;
-  height: 250px; /* Reducida la altura */
+  height: 500px; /* Aumentada la altura para evitar solapamiento */
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0; /* Eliminado el margen superior para acercar a los botones */
+  margin-top: 50px; /* Añadido margen superior */
+  margin-bottom: 50px; /* Añadido margen inferior */
 }
 
 .carousel-container {
   position: relative;
   width: 300px; /* Ancho de una tarjeta */
+  height: 400px; /* Altura explícita para el contenedor */
   transform-style: preserve-3d;
   transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1); /* Transición más suave */
 }
@@ -741,7 +743,7 @@ footer {
   background: var(--light-blue);
   color: var(--dark-blue);
 }
-.card {
+.contact-info-card {
   width: 190px;
   height: 254px;
   background: var(--medium-blue);
@@ -750,7 +752,7 @@ footer {
   margin: 20px 0;
 }
 
-.card .card-border-top {
+.contact-info-card .card-border-top {
   width: 60%;
   height: 3%;
   background: var(--light-blue);
@@ -758,7 +760,7 @@ footer {
   border-radius: 0px 0px 15px 15px;
 }
 
-.card span {
+.contact-info-card span {
   font-weight: 600;
   color: var(--white);
   text-align: center;
@@ -767,7 +769,7 @@ footer {
   font-size: 16px;
 }
 
-.card .job {
+.contact-info-card .job {
   font-weight: 400;
   color: var(--white);
   display: block;
@@ -776,7 +778,7 @@ footer {
   font-size: 12px;
 }
 
-.card .img {
+.contact-info-card .img {
   width: 70px;
   height: 80px;
   background: var(--light-blue);
@@ -788,12 +790,12 @@ footer {
   justify-content: center;
 }
 
-.card .img i {
+.contact-info-card .img i {
   font-size: 36px;
   color: var(--white);
 }
 
-.card button {
+.contact-info-card button {
   padding: 8px 25px;
   display: block;
   margin: auto;
@@ -806,7 +808,7 @@ footer {
   cursor: pointer;
 }
 
-.card button:hover {
+.contact-info-card button:hover {
   background: var(--white);
 }
 
@@ -963,7 +965,7 @@ footer {
 }
 
 /* Colores y animaciones para la tarjeta de las redes*/
-.contact-right .card {
+.contact-right .contact-social-card {
   position: relative;
   width: 200px;
   height: 200px;
@@ -980,7 +982,7 @@ footer {
   background-color: #4158D0;
   background-image: linear-gradient(43deg, #0029f5 0%, #7779f5 46%, #79f6ff 100%);
 }
-.contact-right .logo {
+.contact-right .contact-logo {
   position: absolute;
   right: 50%;
   bottom: 50%;
@@ -992,7 +994,7 @@ footer {
   color: #ffffff;
   letter-spacing: 3px;
 }
-.contact-right .logo .logo-svg {
+.contact-right .contact-logo .logo-svg {
   fill: white;
   width: 30px;
   height: 30px;
@@ -1084,14 +1086,14 @@ footer {
   left: -10%;
   transition-delay: 0.6s;
 }
-.contact-right .card:hover {
+.contact-right .contact-social-card:hover {
   transform: scale(1.1);
 }
-.contact-right .card:hover .box {
+.contact-right .contact-social-card:hover .box {
   bottom: -1px;
   left: -1px;
 }
-.contact-right .card:hover .logo {
+.contact-right .contact-social-card:hover .contact-logo {
   transform: translate(70px, -52px);
   opacity: 0;
   letter-spacing: 0px;
