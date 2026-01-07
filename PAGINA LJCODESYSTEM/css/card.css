@@ -29,7 +29,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  transition: 700ms;
+  transition: 250ms;
   background: #151515; /* Dark cyberpunk bg */
   border: 1px solid #2a2a2a;
   overflow: hidden;
@@ -103,25 +103,11 @@
 }
 
 /* Hover Interactions */
-.tracker:hover ~ .dev-card .title,
-.tracker:hover ~ .dev-card .subtitle {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.tracker:hover ~ .dev-card .prompt {
-  opacity: 0;
-}
-
-.tracker:hover ~ .dev-card img {
-    transform: scale(1.1);
-    box-shadow: 0 0 30px rgba(92, 103, 255, 0.6);
-}
-
-.tracker:hover ~ .dev-card {
-    border-color: #5c67ff;
-    box-shadow: 0 0 30px rgba(92, 103, 255, 0.2);
-}
+.container:hover .dev-card .title,
+.container:hover .dev-card .subtitle { opacity: 1; transform: translateY(0); }
+.container:hover .dev-card .prompt { opacity: 0; }
+.container:hover .dev-card img { transform: scale(1.04); box-shadow: 0 0 24px rgba(92, 103, 255, 0.45); }
+.container:hover .dev-card { border-color: #5c67ff; box-shadow: 0 10px 30px rgba(92, 103, 255, 0.18); transform: translateY(-6px); }
 
 /* === PARTE 2: EFECTOS Y DECORACIÓN === */
 
@@ -341,36 +327,7 @@
     opacity: 1;
 }
 
-/* === 3D Rotations for all trackers === */
-.tr-1:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(20deg) rotateY(-10deg) rotateZ(0deg); }
-.tr-2:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(20deg) rotateY(-5deg) rotateZ(0deg); }
-.tr-3:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(20deg) rotateY(0deg) rotateZ(0deg); }
-.tr-4:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(20deg) rotateY(5deg) rotateZ(0deg); }
-.tr-5:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(20deg) rotateY(10deg) rotateZ(0deg); }
-
-.tr-6:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(10deg) rotateY(-10deg) rotateZ(0deg); }
-.tr-7:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(10deg) rotateY(-5deg) rotateZ(0deg); }
-.tr-8:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(10deg) rotateY(0deg) rotateZ(0deg); }
-.tr-9:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(10deg) rotateY(5deg) rotateZ(0deg); }
-.tr-10:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(10deg) rotateY(10deg) rotateZ(0deg); }
-
-.tr-11:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(0deg) rotateY(-10deg) rotateZ(0deg); }
-.tr-12:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(0deg) rotateY(-5deg) rotateZ(0deg); }
-.tr-13:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-.tr-14:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(0deg) rotateY(5deg) rotateZ(0deg); }
-.tr-15:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(0deg) rotateY(10deg) rotateZ(0deg); }
-
-.tr-16:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(-10deg) rotateY(-10deg) rotateZ(0deg); }
-.tr-17:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(-10deg) rotateY(-5deg) rotateZ(0deg); }
-.tr-18:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(-10deg) rotateY(0deg) rotateZ(0deg); }
-.tr-19:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(-10deg) rotateY(5deg) rotateZ(0deg); }
-.tr-20:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(-10deg) rotateY(10deg) rotateZ(0deg); }
-
-.tr-21:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(-20deg) rotateY(-10deg) rotateZ(0deg); }
-.tr-22:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(-20deg) rotateY(-5deg) rotateZ(0deg); }
-.tr-23:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(-20deg) rotateY(0deg) rotateZ(0deg); }
-.tr-24:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(-20deg) rotateY(5deg) rotateZ(0deg); }
-.tr-25:hover ~ .dev-card { transition: 125ms ease-in-out; transform: rotateX(-20deg) rotateY(10deg) rotateZ(0deg); }
+/* Simplified hover motion */
 
 /* === SOCIAL BUTTONS === */
 .social-links {
