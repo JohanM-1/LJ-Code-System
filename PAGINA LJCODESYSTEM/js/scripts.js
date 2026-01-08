@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Vanta.js background animation
-    /*
     try {
         if (typeof VANTA !== 'undefined') {
             VANTA.NET({
@@ -68,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
         console.error("Vanta error:", error);
     }
-    */
     
     if (typeof Swiper !== 'undefined') {
         const swiper = new Swiper('.swiper-container', {

@@ -22,7 +22,7 @@ html, body {
 body {
     font-family: 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
     background-color: var(--dark-blue); /* Set a fallback background color */
-    background-image: url('../img/fondo.jpg');
+    /* background-image: url('../img/fondo.jpg'); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
