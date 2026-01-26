@@ -1464,4 +1464,23 @@ footer {
     }
     
     .about-us p { margin: 0 auto; }
+
+    /* 5. Ajuste de tarjetas de contacto */
+    .contact-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px; /* Mayor separación vertical entre tarjetas */
+        width: 100%;
+    }
+
+    .contact-info-card {
+        width: 100%; /* Ocupar ancho disponible pero con límite */
+        max-width: 280px; /* Evitar que se estiren demasiado */
+        margin: 0; /* Quitar márgenes laterales innecesarios */
+    }
 }
