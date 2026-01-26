@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
             welcome_left_p: 'Creamos soluciones de software que impulsan el crecimiento y la eficiencia de tu negocio. Desde aplicaciones web hasta sistemas complejos, nuestro equipo está listo para convertir tus ideas en realidad.',
             welcome_right_h2: 'Compromiso y Calidad Garantizada',
             welcome_right_p: 'Nos dedicamos a entregar productos de alta calidad, con un enfoque en la experiencia de usuario y un rendimiento excepcional. Tu éxito es nuestro principal objetivo.',
-            projects_title: 'Mis Proyectos',
+            projects_title: 'Proyectos',
             devs_title: 'Nuestros Desarrolladores',
             contact_title: 'CONTACTANOS',
             dev_prompt: 'Click para ver info',
@@ -316,6 +316,40 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target.id === 'popup-message') {
                 popup.classList.remove('show');
             }
+        });
+    }
+
+    // Hamburger Menu Logic
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            // Toggle icon
+            const icon = hamburger.querySelector('i');
+            if (icon) {
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
+        
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = hamburger.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
         });
     }
 });

@@ -63,28 +63,28 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    border: 3px solid #5c67ff;
+    border: 3px solid var(--primary);
     object-fit: cover;
     margin-bottom: 15px;
-    box-shadow: 0 0 20px rgba(92, 103, 255, 0.3);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
     transition: 0.3s;
 }
 
 .title {
   opacity: 0;
   transition-duration: 300ms;
-  font-family: sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-weight: bold;
   font-size: 1.8rem;
   color: #fff;
-  text-shadow: 0 0 10px rgba(92, 103, 255, 0.5);
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
   transform: translateY(10px);
 }
 
 .subtitle {
   opacity: 0;
   transition-duration: 300ms;
-  font-family: sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1rem;
   color: #aaa;
   transform: translateY(10px);
@@ -95,19 +95,19 @@
   bottom: 30px;
   opacity: 1;
   transition-duration: 300ms;
-  font-family: sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: bold;
   font-size: 0.9rem;
   letter-spacing: 1px;
-  color: #5c67ff;
+  color: var(--primary);
 }
 
 /* Hover Interactions */
 .container:hover .dev-card .title,
 .container:hover .dev-card .subtitle { opacity: 1; transform: translateY(0); }
 .container:hover .dev-card .prompt { opacity: 0; }
-.container:hover .dev-card img { transform: scale(1.04); box-shadow: 0 0 24px rgba(92, 103, 255, 0.45); }
-.container:hover .dev-card { border-color: #5c67ff; box-shadow: 0 10px 30px rgba(92, 103, 255, 0.18); transform: translateY(-6px); }
+.container:hover .dev-card img { transform: scale(1.04); box-shadow: 0 0 24px rgba(59, 130, 246, 0.45); }
+.container:hover .dev-card { border-color: var(--primary); box-shadow: 0 10px 30px rgba(59, 130, 246, 0.18); transform: translateY(-6px); }
 
 /* === PARTE 2: EFECTOS Y DECORACIÓN === */
 

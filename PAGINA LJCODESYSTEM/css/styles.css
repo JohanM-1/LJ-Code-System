@@ -1,11 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
 :root {
-    --dark-blue: #001f3f;
+    /* Existing Palette (Preserved for background/legacy) */
+    --dark-blue: #001f3f; 
     --medium-blue: #003366;
-    --light-blue: #60a5fa;
-    --slate: #a8b2d1;
-    --light-slate: #ccd6f6;
-    --white: #e6f1ff;
-    --steel-blue: #8B9EB8; /* Custom color for titles */
+    
+    /* New Palette from Snippet */
+    --primary: #3b82f6;
+    --background-light: #f8fafc;
+    --background-dark: #020617;
+    --slate-50: #f8fafc;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-600: #475569;
+    --slate-800: #1e293b;
+    --slate-900: #0f172a;
+    
+    /* Mappings */
+    --light-blue: var(--primary); /* Overwrite to use new primary blue */
+    --slate: var(--slate-400);
+    --light-slate: var(--slate-200);
+    --white: #ffffff;
+    --steel-blue: #8B9EB8; 
+    
+    /* Shadows */
+    --shadow-neon: 0 0 20px rgba(59, 130, 246, 0.5);
+    --shadow-neon-strong: 0 0 40px rgba(59, 130, 246, 0.7);
 }
 
 * {
@@ -17,17 +40,22 @@ html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
-    background-color: var(--dark-blue); /* Set a fallback background color */
+    font-family: 'Inter', sans-serif; /* Updated font */
+    background-color: var(--dark-blue); /* Preserved background */
     /* background-image: url('../img/fondo.jpg'); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    color: var(--slate);
+    color: var(--slate-100);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 /* Custom Scrollbar */
@@ -40,13 +68,13 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(96, 165, 250, 0.5); /* Semi-transparent light blue */
+    background-color: rgba(59, 130, 246, 0.5); /* Semi-transparent light blue */
     border-radius: 6px;
     border: 3px solid rgba(0, 31, 63, 0.5); /* Creates padding effect */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(96, 165, 250, 0.8);
+    background-color: rgba(59, 130, 246, 0.8);
 }
 
 #vanta-bg {
@@ -62,15 +90,64 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
+    padding: 0 50px;
+    height: 80px; /* h-20 */
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 100;
-    background-color: rgba(0, 31, 63, 0.85); /* Dark Blue with transparency */
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--light-blue);
+    background-color: rgba(2, 6, 23, 0.8); /* bg-background-dark/80 */
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(30, 41, 59, 0.5); /* border-slate-800/50 */
 }
+
+/* Utility Classes matching Snippet */
+.tech-grid {
+    background-image: radial-gradient(circle at 2px 2px, rgba(59, 130, 246, 0.15) 1px, transparent 0);
+    background-size: 40px 40px;
+}
+
+.font-display {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.text-primary {
+    color: var(--primary);
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-black {
+    font-weight: 900;
+}
+
+.tracking-tighter {
+    letter-spacing: -0.05em;
+}
+
+.glow-text {
+    text-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.4);
+}
+
+.shadow-neon {
+    box-shadow: var(--shadow-neon);
+}
+
+.glass-panel {
+    background-color: rgba(255, 255, 255, 0.05); /* bg-white/5 */
+    border: 1px solid rgba(226, 232, 240, 0.1); /* border-slate-200/10 */
+    backdrop-filter: blur(20px); /* backdrop-blur-xl */
+    border-radius: 1rem; /* rounded-2xl */
+    transition: all 0.5s ease;
+}
+
+.glass-panel:hover {
+    border-color: rgba(59, 130, 246, 0.5); /* hover:border-primary/50 */
+    box-shadow: var(--shadow-neon);
+}
+
 
 nav {
     display: flex;
@@ -87,24 +164,29 @@ nav {
 }
 
 .lang-switcher-container select {
-    background: var(--medium-blue);
+    background: rgba(255, 255, 255, 0.05);
     color: var(--white);
-    border: 1px solid var(--light-blue);
-    border-radius: 8px;
-    padding: 6px 30px 6px 10px;
+    border: 1px solid rgba(226, 232, 240, 0.1);
+    border-radius: 0.5rem; /* rounded-lg */
+    padding: 8px 32px 8px 12px;
     outline: none;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2360a5fa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: right 5px center;
+    background-position: right 8px center;
     background-size: 16px;
     cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
 }
 
 .lang-switcher-container select:hover {
-    border-color: var(--white);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary);
 }
 
 .logo {
@@ -151,15 +233,16 @@ nav li {
 }
 
 nav a {
-    color: var(--light-slate);
+    color: var(--slate-400);
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px; /* text-sm */
+    font-weight: 500; /* font-medium */
     padding: 10px;
     transition: color 0.3s ease;
 }
 
 nav a:hover {
-    color: var(--light-blue);
+    color: var(--primary);
 }
 
 main {
@@ -195,22 +278,40 @@ main {
 }
 
 .company-name {
-    font-size: 3rem;
-    color: var(--light-blue);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 5rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    color: var(--white);
     text-align: center;
     margin: 1rem 0;
+    text-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.4); /* Glow effect */
+}
+
+@media (min-width: 768px) {
+    .company-name {
+        font-size: 7rem;
+    }
 }
 
 .welcome-text-left,
 .welcome-text-right {
     flex-basis: 30%;
     padding: 30px;
-    background-color: rgba(0, 31, 63, 0.25);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px); /* Support for Safari */
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05); /* bg-white/5 */
+    backdrop-filter: blur(20px); /* backdrop-blur-xl */
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 1rem; /* rounded-2xl */
+    border: 1px solid rgba(226, 232, 240, 0.1); /* border-slate-200/10 */
+    transition: all 0.5s ease;
 }
+
+.welcome-text-left:hover,
+.welcome-text-right:hover {
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: var(--shadow-neon);
+}
+
 
 .welcome-text-left {
     text-align: center;
@@ -590,63 +691,60 @@ main {
 }
 
 .project-card {
-  background-color: rgba(17, 34, 51, 0.75); /* Semi-transparent dark blue */
-  border: 1px solid var(--light-blue);
-  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.05); /* bg-white/5 */
+  border: 1px solid rgba(226, 232, 240, 0.1); /* border-slate-200/10 */
+  backdrop-filter: blur(20px); /* backdrop-blur-xl */
+  border-radius: 1rem; /* rounded-2xl */
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.5s ease;
   width: 100%;
   text-align: left;
 }
 
 .project-card:hover {
-  transform: translateY(-10px) scale(1.01);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-10px);
+  border-color: rgba(59, 130, 246, 0.5); /* hover:border-primary/50 */
+  box-shadow: var(--shadow-neon);
 }
 
 .project-image {
   overflow: hidden;
-  border-radius: 15px 15px 0 0;
+  border-radius: 1rem 1rem 0 0;
   aspect-ratio: 16 / 9;
   position: relative;
   z-index: 0;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.1);
 }
 
 .project-image img {
   width: 100%;
   height: 100%;
   display: block;
-  transition: transform 0.3s ease, filter 0.3s ease;
-  filter: grayscale(40%);
+  transition: transform 0.5s ease, filter 0.5s ease;
+  filter: grayscale(20%);
   object-fit: cover;
   object-position: center;
 }
 
 .project-card:hover .project-image img {
-  transform: scale(1.02);
+  transform: scale(1.05);
   filter: grayscale(0%);
 }
 
-.project-content {
-  padding: 20px 20px 20px 32px;
-  position: relative;
-  z-index: 1;
-}
-
 .project-content h3 {
-  color: var(--light-slate);
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--white);
   margin-bottom: 10px;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
 }
 
 .project-content p {
-  color: var(--slate);
-  font-size: 0.9rem;
-  line-height: 1.5;
+  color: var(--slate-400);
+  font-size: 1rem;
+  line-height: 1.6;
 }
+
 
 .dev-status {
   color: var(--light-slate);
@@ -867,12 +965,13 @@ footer {
 .contact-info-card {
   width: 190px;
   height: 254px;
-  background: var(--medium-blue);
-  border-radius: 15px;
-  box-shadow: 1px 5px 30px 0px #100a886b;
+  background: rgba(255, 255, 255, 0.05); /* bg-white/5 */
+  border-radius: 1rem; /* rounded-2xl */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   margin: 20px 0;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(226, 232, 240, 0.1); /* border-slate-200/10 */
+  backdrop-filter: blur(20px);
   position: relative;
   will-change: transform, box-shadow;
 }
@@ -941,8 +1040,8 @@ footer {
 
 .contact-info-card:hover {
   transform: translateY(-6px);
-  box-shadow: 1px 10px 40px 0px rgba(16,10,136,0.5);
-  border-color: rgba(255,255,255,0.15);
+  box-shadow: var(--shadow-neon);
+  border-color: rgba(59, 130, 246, 0.5);
 }
 
 /* Accent glow on hover */
@@ -1261,3 +1360,108 @@ footer {
   letter-spacing: 0px;
 }
 
+/* Navbar Responsive Styles */
+.hamburger-menu {
+    display: none;
+    font-size: 24px;
+    color: var(--white);
+    cursor: pointer;
+    order: 3;
+}
+
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: rgba(2, 6, 23, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: left 0.3s ease-in-out;
+        z-index: 99;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+    
+    .nav-links a {
+        font-size: 1.2rem;
+    }
+}
+
+/* Responsive Developer Cards */
+@media (max-width: 768px) {
+    .desarrolladores-container {
+        gap: 20px;
+    }
+    
+    .contact-cards {
+        gap: 20px;
+    }
+}
+
+/* Placeholder Icon Style */
+.img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(0, 31, 63, 0.5));
+    color: var(--light-blue);
+    font-size: 3rem;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.1);
+}
+
+/* --- CORRECCIONES RESPONSIVAS --- */
+@media (max-width: 768px) {
+    /* 1. Ajuste de espaciado general */
+    header { padding: 0 20px; }
+    #welcome { padding: 0 20px; }
+    #contacto { padding: 80px 20px; }
+    footer { padding: 40px 20px; }
+    
+    /* 2. Ajuste del selector de idioma */
+    .lang-switcher-container {
+        right: 20px;
+        top: 85px; /* Ajuste fino */
+    }
+
+    /* 3. Stackear contenido del Welcome */
+    .welcome-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    /* Reordenar para que el título salga primero */
+    .company-name-wrapper { order: 1; }
+    .welcome-text-left { order: 2; margin-bottom: 20px; }
+    .welcome-text-right { order: 3; }
+
+    /* Reducir tipografía gigante */
+    .company-name {
+        font-size: 2.5rem; /* Mucho más amigable para móvil */
+    }
+
+    /* 4. Footer vertical */
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .about-us p { margin: 0 auto; }
+}

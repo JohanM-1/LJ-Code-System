@@ -16,14 +16,21 @@
     <div id="vanta-bg"></div>
     <header>
         <nav>
-            <ul>
+            <div class="logo">
+                <a href="#" class="font-display font-bold tracking-tighter" style="text-decoration: none; color: white; display: flex; align-items: center; gap: 0.5rem; font-size: 1.25rem;">
+                   <div class="typewriter">
+                        <span class="text-primary font-black">LJ</span> CODE SYSTEM
+                   </div>
+                </a>
+            </div>
+            <ul class="nav-links">
                 <li><a href="#welcome" data-i18n="nav_about">Sobre Nosotros</a></li>
                 <li><a href="#proyectos" data-i18n="nav_projects">Proyectos</a></li>
                 <li><a href="#desarrolladores" data-i18n="nav_devs">Desarrolladores</a></li>
                 <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
             </ul>
-            <div class="logo">
-                <span class="typewriter">LJ CODE SYSTEM</span>
+            <div class="hamburger-menu">
+                <i class="fas fa-bars"></i>
             </div>
         </nav>
     </header>
@@ -35,7 +42,7 @@
         </select>
     </div>
 
-    <main>
+    <main class="tech-grid">
         <section id="welcome">
             <div class="welcome-content">
                 <div class="welcome-text-left">
@@ -44,6 +51,8 @@
                 </div>
                 <div class="company-name-wrapper">
                     <h1 class="company-name">LJ CODE SYSTEM</h1>
+                    <div style="height: 4px; width: 6rem; background-color: var(--primary); margin: 0 auto 1rem auto; border-radius: 9999px; box-shadow: var(--shadow-neon);"></div>
+                    <p style="color: var(--slate-500); font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.75rem; text-align: center;">Architecting the future</p>
                 </div>
                 <div class="welcome-text-right">
                     <h2 data-i18n="welcome_right_h2">Compromiso y Calidad Garantizada</h2>
@@ -53,7 +62,7 @@
         </section>
 
     <section id="proyectos">
-      <h2 class="section-title" data-i18n="projects_title">Mis Proyectos</h2>
+      <h2 class="section-title" data-i18n="projects_title">Proyectos</h2>
       <div class="projects-list" data-visible="3">
           <div class="project-card" data-github="" data-live="https://www.lcgdeportivos.org/">
             <div class="project-image">
@@ -218,7 +227,8 @@
                           <div class="card-particles">
                               <span></span><span></span><span></span><span></span>
                           </div>
-                          <img src="https://via.placeholder.com/150" alt="Foto de Leonardo Baquero">
+                          <!-- <img src="https://via.placeholder.com/150" alt="Foto de Leonardo Baquero"> -->
+                          <div class="img-placeholder"><i class="fas fa-user-astronaut"></i></div>
                           <div class="prompt" data-i18n="dev_prompt">Click para ver info</div>
                           <h3 class="title">Leonardo Baquero</h3>
                           <div class="subtitle">🇨🇴 Desarrollador</div>
@@ -295,7 +305,8 @@
                           <div class="card-particles">
                               <span></span><span></span><span></span><span></span>
                           </div>
-                          <img src="https://via.placeholder.com/150" alt="Foto de Monrroy">
+                          <!-- <img src="https://via.placeholder.com/150" alt="Foto de Monrroy"> -->
+                          <div class="img-placeholder"><i class="fas fa-user-astronaut"></i></div>
                           <div class="prompt" data-i18n="dev_prompt">Click para ver info</div>
                           <h3 class="title">Johan Monroy</h3>
                           <div class="subtitle">🇨🇴 Desarrollador</div>
@@ -369,7 +380,8 @@
                           <div class="card-particles">
                               <span></span><span></span><span></span><span></span>
                           </div>
-                          <img src="https://via.placeholder.com/150" alt="Foto de Martinez">
+                          <!-- <img src="https://via.placeholder.com/150" alt="Foto de Martinez"> -->
+                          <div class="img-placeholder"><i class="fas fa-user-astronaut"></i></div>
                           <div class="prompt" data-i18n="dev_prompt">Click para ver info</div>
                           <h3 class="title">Santiago Martinez</h3>
                           <div class="subtitle">🇨🇴 Desarrollador</div>
@@ -445,7 +457,8 @@
                           <div class="card-particles">
                               <span></span><span></span><span></span><span></span>
                           </div>
-                          <img src="https://via.placeholder.com/150" alt="Foto de Juan David Erazo">
+                          <!-- <img src="https://via.placeholder.com/150" alt="Foto de Juan David Erazo"> -->
+                          <div class="img-placeholder"><i class="fas fa-user-astronaut"></i></div>
                           <div class="prompt" data-i18n="dev_prompt">Click para ver info</div>
                           <h3 class="title"> Juan David </h3>
                           <div class="subtitle">🇨🇴 Desarrollador</div>
@@ -495,17 +508,17 @@
             <div class="contact-cards">
               <div class="contact-info-card">
                 <div class="card-border-top"></div>
-                <div class="img"><i class="fa-brands fa-whatsapp"></i></div>
+                <div class="img"><i class="fas fa-envelope"></i></div>
                 <span>Leonardo Baquero</span>
                 <p class="job">Desarrollador Principal</p>
-                <button type="button" onclick="window.open('https://wa.me/573107547938','_blank')">WhatsApp</button>
+                <button type="button" onclick="window.location.href='mailto:leobaquero456@gmail.com'">Email</button>
               </div>
               <div class="contact-info-card">
                 <div class="card-border-top"></div>
-                <div class="img"><i class="fa-brands fa-whatsapp"></i></div>
+                <div class="img"><i class="fas fa-envelope"></i></div>
                 <span>Johan Monrroy</span>
                 <p class="job">Desarrollador Principal</p>
-                <button type="button" onclick="window.open('https://wa.me/573142453788','_blank')">WhatsApp</button>
+                <button type="button" onclick="window.location.href='mailto:johan16231@gmail.com'">Email</button>
               </div>
               <div class="contact-info-card">
                 <div class="card-border-top"></div>
