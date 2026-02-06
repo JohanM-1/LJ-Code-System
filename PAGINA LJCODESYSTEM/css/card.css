@@ -9,6 +9,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
+  margin-bottom: 70px; /* Space for social buttons */
 }
 
 .container:hover {
@@ -19,7 +20,7 @@
   transform: scale(0.98);
 }
 
-.card {
+.dev-card {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -28,7 +29,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  transition: 700ms;
+  transition: 250ms;
   background: #151515; /* Dark cyberpunk bg */
   border: 1px solid #2a2a2a;
   overflow: hidden;
@@ -62,28 +63,28 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    border: 3px solid #5c67ff;
+    border: 3px solid var(--primary);
     object-fit: cover;
     margin-bottom: 15px;
-    box-shadow: 0 0 20px rgba(92, 103, 255, 0.3);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
     transition: 0.3s;
 }
 
 .title {
   opacity: 0;
   transition-duration: 300ms;
-  font-family: sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-weight: bold;
   font-size: 1.8rem;
   color: #fff;
-  text-shadow: 0 0 10px rgba(92, 103, 255, 0.5);
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
   transform: translateY(10px);
 }
 
 .subtitle {
   opacity: 0;
   transition-duration: 300ms;
-  font-family: sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1rem;
   color: #aaa;
   transform: translateY(10px);
@@ -94,33 +95,19 @@
   bottom: 30px;
   opacity: 1;
   transition-duration: 300ms;
-  font-family: sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: bold;
   font-size: 0.9rem;
   letter-spacing: 1px;
-  color: #5c67ff;
+  color: var(--primary);
 }
 
 /* Hover Interactions */
-.tracker:hover ~ .card .title,
-.tracker:hover ~ .card .subtitle {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.tracker:hover ~ .card .prompt {
-  opacity: 0;
-}
-
-.tracker:hover ~ .card img {
-    transform: scale(1.1);
-    box-shadow: 0 0 30px rgba(92, 103, 255, 0.6);
-}
-
-.tracker:hover ~ .card {
-    border-color: #5c67ff;
-    box-shadow: 0 0 30px rgba(92, 103, 255, 0.2);
-}
+.container:hover .dev-card .title,
+.container:hover .dev-card .subtitle { opacity: 1; transform: translateY(0); }
+.container:hover .dev-card .prompt { opacity: 0; }
+.container:hover .dev-card img { transform: scale(1.04); box-shadow: 0 0 24px rgba(59, 130, 246, 0.45); }
+.container:hover .dev-card { border-color: var(--primary); box-shadow: 0 10px 30px rgba(59, 130, 246, 0.18); transform: translateY(-6px); }
 
 /* === PARTE 2: EFECTOS Y DECORACIÓN === */
 
@@ -277,7 +264,7 @@
 }
 
 /* Hover effects */
-.card:hover .card-glare {
+.dev-card:hover .card-glare {
   opacity: 1;
 }
 
@@ -285,7 +272,7 @@
   transition: all 0.3s ease;
 }
 
-.card:hover .corner-elements span {
+.dev-card:hover .corner-elements span {
   border-color: rgba(92, 103, 255, 0.8);
   box-shadow: 0 0 10px rgba(92, 103, 255, 0.5);
 }
@@ -309,8 +296,8 @@
 .glow-1 { top: -20px; left: -20px; }
 .glow-2 { bottom: -20px; right: -20px; }
 
-.card:hover .glow-1,
-.card:hover .glow-2 {
+.dev-card:hover .glow-1,
+.dev-card:hover .glow-2 {
     opacity: 1;
 }
 
@@ -336,40 +323,11 @@
 .card-particles span:nth-child(3) { left: 70%; animation-delay: 2s; }
 .card-particles span:nth-child(4) { left: 90%; animation-delay: 0.5s; }
 
-.card:hover .card-particles span {
+.dev-card:hover .card-particles span {
     opacity: 1;
 }
 
-/* === 3D Rotations for all trackers === */
-.tr-1:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(20deg) rotateY(-10deg) rotateZ(0deg); }
-.tr-2:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(20deg) rotateY(-5deg) rotateZ(0deg); }
-.tr-3:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(20deg) rotateY(0deg) rotateZ(0deg); }
-.tr-4:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(20deg) rotateY(5deg) rotateZ(0deg); }
-.tr-5:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(20deg) rotateY(10deg) rotateZ(0deg); }
-
-.tr-6:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(10deg) rotateY(-10deg) rotateZ(0deg); }
-.tr-7:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(10deg) rotateY(-5deg) rotateZ(0deg); }
-.tr-8:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(10deg) rotateY(0deg) rotateZ(0deg); }
-.tr-9:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(10deg) rotateY(5deg) rotateZ(0deg); }
-.tr-10:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(10deg) rotateY(10deg) rotateZ(0deg); }
-
-.tr-11:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(0deg) rotateY(-10deg) rotateZ(0deg); }
-.tr-12:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(0deg) rotateY(-5deg) rotateZ(0deg); }
-.tr-13:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-.tr-14:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(0deg) rotateY(5deg) rotateZ(0deg); }
-.tr-15:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(0deg) rotateY(10deg) rotateZ(0deg); }
-
-.tr-16:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(-10deg) rotateY(-10deg) rotateZ(0deg); }
-.tr-17:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(-10deg) rotateY(-5deg) rotateZ(0deg); }
-.tr-18:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(-10deg) rotateY(0deg) rotateZ(0deg); }
-.tr-19:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(-10deg) rotateY(5deg) rotateZ(0deg); }
-.tr-20:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(-10deg) rotateY(10deg) rotateZ(0deg); }
-
-.tr-21:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(-20deg) rotateY(-10deg) rotateZ(0deg); }
-.tr-22:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(-20deg) rotateY(-5deg) rotateZ(0deg); }
-.tr-23:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(-20deg) rotateY(0deg) rotateZ(0deg); }
-.tr-24:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(-20deg) rotateY(5deg) rotateZ(0deg); }
-.tr-25:hover ~ .card { transition: 125ms ease-in-out; transform: rotateX(-20deg) rotateY(10deg) rotateZ(0deg); }
+/* Simplified hover motion */
 
 /* === SOCIAL BUTTONS === */
 .social-links {

@@ -4,62 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LJ Code System</title>
-    <link rel="stylesheet" href="css/styles.css?v=1.1">
+    <link rel="stylesheet" href="css/styles.css?v=1.4">
     <link rel="stylesheet" href="css/card.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
+
+      <!-- Barra -->
+
 <body>
     <div id="vanta-bg"></div>
     <header>
         <nav>
             <div class="logo">
-                <span class="typewriter">LJ CODE SYSTEM</span>
+                <a href="#" class="font-display font-bold tracking-tighter" style="text-decoration: none; color: white; display: flex; align-items: center; gap: 0.5rem; font-size: 1.25rem;">
+                   <div class="typewriter">
+                        <span class="text-primary font-black">LJ</span> CODE SYSTEM
+                   </div>
+                </a>
             </div>
-            <ul>
-                <li><a href="#welcome">Sobre Nosotros</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#desarrolladores">Desarrolladores</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+            <ul class="nav-links">
+                <li><a href="#welcome" data-i18n="nav_about">Sobre Nosotros</a></li>
+                <li><a href="#proyectos" data-i18n="nav_projects">Proyectos</a></li>
+                <li><a href="#desarrolladores" data-i18n="nav_devs">Desarrolladores</a></li>
+                <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
             </ul>
+            <div class="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
         </nav>
     </header>
+    <div class="lang-switcher-container">
+        <select id="lang-switcher">
+            <option value="es">ES</option>
+            <option value="en">EN</option>
+            <option value="pt">PT</option>
+        </select>
+    </div>
 
-    <main>
+    <main class="tech-grid">
         <section id="welcome">
             <div class="welcome-content">
                 <div class="welcome-text-left">
-                    <h2>Innovación y Desarrollo a tu Medida</h2>
-                    <p>Creamos soluciones de software que impulsan el crecimiento y la eficiencia de tu negocio. Desde aplicaciones web hasta sistemas complejos, nuestro equipo está listo para convertir tus ideas en realidad.</p>
+                    <h2 data-i18n="welcome_left_h2">Innovación y Desarrollo a tu Medida</h2>
+                    <p data-i18n="welcome_left_p">Creamos soluciones de software que impulsan el crecimiento y la eficiencia de tu negocio. Desde aplicaciones web hasta sistemas complejos, nuestro equipo está listo para convertir tus ideas en realidad.</p>
                 </div>
                 <div class="company-name-wrapper">
                     <h1 class="company-name">LJ CODE SYSTEM</h1>
+                    <div style="height: 4px; width: 6rem; background-color: var(--primary); margin: 0 auto 1rem auto; border-radius: 9999px; box-shadow: var(--shadow-neon);"></div>
+                    <p style="color: var(--slate-500); font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.75rem; text-align: center;">Architecting the future</p>
                 </div>
                 <div class="welcome-text-right">
-                    <h2>Compromiso y Calidad Garantizada</h2>
-                    <p>Nos dedicamos a entregar productos de alta calidad, con un enfoque en la experiencia de usuario y un rendimiento excepcional. Tu éxito es nuestro principal objetivo.</p>
+                    <h2 data-i18n="welcome_right_h2">Compromiso y Calidad Garantizada</h2>
+                    <p data-i18n="welcome_right_p">Nos dedicamos a entregar productos de alta calidad, con un enfoque en la experiencia de usuario y un rendimiento excepcional. Tu éxito es nuestro principal objetivo.</p>
                 </div>
             </div>
         </section>
 
     <section id="proyectos">
-      <h2 class="section-title">Mis Proyectos</h2>
-      <div class="carousel-nav">
-        <button id="prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i></button>
-        <button id="next-btn" class="nav-btn"><i class="fas fa-chevron-right"></i></button>
-      </div>
-      <div class="carousel-wrapper">
-        <div class="carousel-container">
-          <div class="project-card carousel-item">  
+      <h2 class="section-title" data-i18n="projects_title">Proyectos</h2>
+      <div class="projects-list" data-visible="3">
+          <div class="project-card" data-github="" data-live="https://www.lcgdeportivos.org/">
             <div class="project-image">
-              <img src="https://via.placeholder.com/350x250" alt="Proyecto 1">
+              <img src="images/torneos deportivos.png" alt="Sistema Deportivo Rey">
             </div>
             <div class="project-content">
               <h3>Proyecto Uno</h3>
-              <p>Descripción breve del primer proyecto.</p>
+              <p data-i18n="proj1_desc">Descripción breve del primer proyecto.</p>
               <div class="project-tech">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
+                <span>React</span>
+                <span>Next.js</span>
+                <span>Tailwind CSS</span>
+                <span>Vercel</span>
+                <span>HSTS</span>
               </div>
               <div class="project-links">
                 <a href="#" target="_blank"><i class="fab fa-github"></i></a>
@@ -67,13 +84,13 @@
               </div>
             </div>
           </div>
-          <div class="project-card carousel-item">
+          <div class="project-card" data-github="" data-live="">
             <div class="project-image">
-              <img src="https://via.placeholder.com/350x250" alt="Proyecto 2">
+              <div class="image-skeleton" aria-label="Cargando"></div>
             </div>
             <div class="project-content">
               <h3>Proyecto Dos</h3>
-              <p>Descripción breve del segundo proyecto.</p>
+              <p><span class="dev-status" data-i18n="in_dev">En desarrollo</span><span class="dev-dots"><span></span><span></span><span></span></span></p>
               <div class="project-tech">
                 <span>React</span>
                 <span>Node.js</span>
@@ -85,13 +102,13 @@
               </div>
             </div>
           </div>
-          <div class="project-card carousel-item">
+          <div class="project-card" data-github="" data-live="">
             <div class="project-image">
-              <img src="https://via.placeholder.com/350x250" alt="Proyecto 3">
+              <div class="image-skeleton" aria-label="Cargando"></div>
             </div>
             <div class="project-content">
               <h3>Proyecto Tres</h3>
-              <p>Descripción breve del tercer proyecto.</p>
+              <p><span class="dev-status" data-i18n="in_dev">En desarrollo</span><span class="dev-dots"><span></span><span></span><span></span></span></p>
               <div class="project-tech">
                 <span>Vue</span>
                 <span>Firebase</span>
@@ -102,13 +119,13 @@
               </div>
             </div>
           </div>
-          <div class="project-card carousel-item">
+          <div class="project-card" data-github="" data-live="">
             <div class="project-image">
-              <img src="https://via.placeholder.com/350x250" alt="Proyecto 4">
+              <div class="image-skeleton" aria-label="Cargando"></div>
             </div>
             <div class="project-content">
               <h3>Proyecto Cuatro</h3>
-              <p>Descripción breve del cuarto proyecto.</p>
+              <p><span class="dev-status" data-i18n="in_dev">En desarrollo</span><span class="dev-dots"><span></span><span></span><span></span></span></p>
               <div class="project-tech">
                 <span>Angular</span>
                 <span>.NET</span>
@@ -119,13 +136,13 @@
               </div>
             </div>
           </div>
-          <div class="project-card carousel-item">
+          <div class="project-card" data-github="" data-live="">
             <div class="project-image">
-              <img src="https://via.placeholder.com/350x250" alt="Proyecto 5">
+              <div class="image-skeleton" aria-label="Cargando"></div>
             </div>
             <div class="project-content">
               <h3>Proyecto Cinco</h3>
-              <p>Descripción breve del quinto proyecto.</p>
+              <p><span class="dev-status" data-i18n="in_dev">En desarrollo</span><span class="dev-dots"><span></span><span></span><span></span></span></p>
               <div class="project-tech">
                 <span>Python</span>
                 <span>Django</span>
@@ -136,13 +153,13 @@
               </div>
             </div>
           </div>
-          <div class="project-card carousel-item">
+          <div class="project-card" data-github="" data-live="">
             <div class="project-image">
-              <img src="https://via.placeholder.com/350x250" alt="Proyecto 6">
+              <div class="image-skeleton" aria-label="Cargando"></div>
             </div>
             <div class="project-content">
               <h3>Proyecto Seis</h3>
-              <p>Descripción breve del sexto proyecto.</p>
+              <p><span class="dev-status" data-i18n="in_dev">En desarrollo</span><span class="dev-dots"><span></span><span></span><span></span></span></p>
               <div class="project-tech">
                 <span>Java</span>
                 <span>Spring Boot</span>
@@ -153,13 +170,15 @@
               </div>
             </div>
           </div>
-        </div>
+      </div>
+      <div class="projects-actions">
+        <button id="projects-toggle" class="projects-toggle-btn">Ver más</button>
       </div>
     </section>
 
       <!-- Leonardo Baquero-->
     <section id="desarrolladores">
-      <h2 class="section-title">Nuestros Desarrolladores</h2>
+      <h2 class="section-title" data-i18n="devs_title">Nuestros Desarrolladores</h2>
       <div class="desarrolladores-container">
 
           <!-- Leonardo Baquero -->
@@ -189,7 +208,7 @@
                   <div class="tracker tr-23"></div>
                   <div class="tracker tr-24"></div>
                   <div class="tracker tr-25"></div>
-              <div class="card">
+              <div class="dev-card">
                   <div class="card-visual">
                       <div class="card-glare"></div>
                       <div class="cyber-lines">
@@ -208,16 +227,18 @@
                           <div class="card-particles">
                               <span></span><span></span><span></span><span></span>
                           </div>
-                          <img src="https://via.placeholder.com/150" alt="Foto de Leonardo Baquero">
-                          <div class="prompt">Click para ver info</div>
+                          <!-- <img src="https://via.placeholder.com/150" alt="Foto de Leonardo Baquero"> -->
+                          <div class="img-placeholder"><i class="fas fa-user-astronaut"></i></div>
+                          <div class="prompt" data-i18n="dev_prompt">Click para ver info</div>
                           <h3 class="title">Leonardo Baquero</h3>
                           <div class="subtitle">🇨🇴 Desarrollador</div>
                       </div>
                   </div>
               </div>
               <div class="social-links">
-                  <a href="#" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
-                  <a href="#" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                  <a href="https://github.com/LJprogram657" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-github"></i></a>
+                  <a href="https://www.instagram.com/leo0_baq/" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-instagram"></i></a>
+                  <a href="#" onclick="return window.openGmailCompose('leobaquero456@gmail.com')" class="social-btn"><i class="fas fa-envelope"></i></a>
               </div>
               <div class="developer-info-hidden" style="display: none;">
                   <div class="info-block">
@@ -265,7 +286,7 @@
                   <div class="tracker tr-23"></div>
                   <div class="tracker tr-24"></div>
                   <div class="tracker tr-25"></div>
-              <div class="card">
+              <div class="dev-card">
                   <div class="card-visual">
                       <div class="card-glare"></div>
                       <div class="cyber-lines">
@@ -284,16 +305,17 @@
                           <div class="card-particles">
                               <span></span><span></span><span></span><span></span>
                           </div>
-                          <img src="https://via.placeholder.com/150" alt="Foto de Monrroy">
-                          <div class="prompt">Click para ver info</div>
+                          <!-- <img src="https://via.placeholder.com/150" alt="Foto de Monrroy"> -->
+                          <div class="img-placeholder"><i class="fas fa-user-astronaut"></i></div>
+                          <div class="prompt" data-i18n="dev_prompt">Click para ver info</div>
                           <h3 class="title">Johan Monroy</h3>
                           <div class="subtitle">🇨🇴 Desarrollador</div>
                       </div>
                   </div>
               </div>
               <div class="social-links">
-                  <a href="#" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
-                  <a href="#" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                  <a href="https://github.com/JohanM-1" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-github"></i></a>
+                  <a href="#" onclick="return window.openGmailCompose('johan16231@gmail.com')" class="social-btn"><i class="fas fa-envelope"></i></a>
               </div>
               <div class="developer-info-hidden" style="display: none;">
                   <div class="info-block">
@@ -306,9 +328,9 @@
                   </div>
                   <div class="info-block">
                       <h4><i class="fas fa-graduation-cap"></i> Estudios</h4>
-                      <p>Estudiando Tecnólogo en Desarrollo de Software</p>
+                      <p>Tecnólogo en Desarrollo de Software</p>
                   </div>
-                  <button class="portfolio-link"><i class="fas fa-user-astronaut"></i> Portafolio Personal</button>
+                  <a class="portfolio-link" href="https://johanm-1.github.io/Portfolio/" target="_blank" rel="noopener"><i class="fas fa-user-astronaut"></i> Portafolio Personal</a>
               </div>
           </div>
 
@@ -339,7 +361,7 @@
                   <div class="tracker tr-23"></div>
                   <div class="tracker tr-24"></div>
                   <div class="tracker tr-25"></div>
-              <div class="card">
+              <div class="dev-card">
                   <div class="card-visual">
                       <div class="card-glare"></div>
                       <div class="cyber-lines">
@@ -358,16 +380,18 @@
                           <div class="card-particles">
                               <span></span><span></span><span></span><span></span>
                           </div>
-                          <img src="https://via.placeholder.com/150" alt="Foto de Martinez">
-                          <div class="prompt">Click para ver info</div>
+                          <!-- <img src="https://via.placeholder.com/150" alt="Foto de Martinez"> -->
+                          <div class="img-placeholder"><i class="fas fa-user-astronaut"></i></div>
+                          <div class="prompt" data-i18n="dev_prompt">Click para ver info</div>
                           <h3 class="title">Santiago Martinez</h3>
                           <div class="subtitle">🇨🇴 Desarrollador</div>
                       </div>
                   </div>
               </div>
               <div class="social-links">
-                  <a href="#" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
-                  <a href="#" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                  <a href="https://github.com/MartinezSantiago03" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-github"></i></a>
+                  <a href="https://www.instagram.com/santiagom03/" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-instagram"></i></a>
+                  <a href="#" onclick="return window.openGmailCompose('damh0310@gmail.com')" class="social-btn"><i class="fas fa-envelope"></i></a>
               </div>
               <div class="developer-info-hidden" style="display: none;">
                   <div class="info-block">
@@ -414,7 +438,7 @@
                   <div class="tracker tr-23"></div>
                   <div class="tracker tr-24"></div>
                   <div class="tracker tr-25"></div>
-              <div class="card">
+              <div class="dev-card">
                   <div class="card-visual">
                       <div class="card-glare"></div>
                       <div class="cyber-lines">
@@ -433,20 +457,22 @@
                           <div class="card-particles">
                               <span></span><span></span><span></span><span></span>
                           </div>
-                          <img src="https://via.placeholder.com/150" alt="Foto de Juan David Erazo">
-                          <div class="prompt">Click para ver info</div>
+                          <!-- <img src="https://via.placeholder.com/150" alt="Foto de Juan David Erazo"> -->
+                          <div class="img-placeholder"><i class="fas fa-user-astronaut"></i></div>
+                          <div class="prompt" data-i18n="dev_prompt">Click para ver info</div>
                           <h3 class="title"> Juan David </h3>
-                          <div class="subtitle">🇨🇴 Desarrollador</div>
+                          <div class="subtitle">🇨🇴 <span data-i18n="dev_job_title">Desarrollador</span></div>
                       </div>
                   </div>
               </div>
               <div class="social-links">
-                  <a href="#" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
-                  <a href="#" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                  <a href="https://github.com/JuanDavid667545" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-github"></i></a>
+                  <a href="https://www.instagram.com/juan.dm0" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-instagram"></i></a>
+                  <a href="#" onclick="return window.openGmailCompose('daviderazomalagon@gmail.com')" class="social-btn"><i class="fas fa-envelope"></i></a>
               </div>
               <div class="developer-info-hidden" style="display: none;">
                   <div class="info-block">
-                      <h4><i class="fas fa-paint-brush"></i> Tecnologías</h4>
+                      <h4><i class="fas fa-paint-brush"></i> <span data-i18n="dev_tech_title">Tecnologías</span></h4>
                       <div class="tech-stack">
                           <div class="tech-btn html5" title="HTML5"><i class="fab fa-html5"></i></div>
                           <div class="tech-btn css3" title="CSS3"><i class="fab fa-css3-alt"></i></div>
@@ -476,14 +502,40 @@
     </section>
 
     <section id="contacto">
-        <h2 class="section-title">Contáctanos</h2>
-        <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            <input type="text" name="name" placeholder="Tu Nombre" required>
-            <input type="email" name="email" placeholder="Tu Correo Electrónico" required>
-            <textarea name="message" placeholder="Tu Mensaje" required></textarea>
-            <button type="submit">Enviar Mensaje</button>
-        </form>
-    </section>
+        <div class="contact-wrapper">
+            <div class="contact-left">
+                <h2 class="section-title" data-i18n="contact_title">CONTACTANOS</h2>
+            <div class="contact-cards">
+              <div class="contact-info-card">
+                <div class="card-border-top"></div>
+                <div class="img"><i class="fas fa-envelope"></i></div>
+                <span>Leonardo Baquero</span>
+                <p class="job">Desarrollador Principal</p>
+                <button type="button" onclick="return window.openGmailCompose('leobaquero456@gmail.com')" data-i18n="btn_email">Email</button>
+              </div>
+              <div class="contact-info-card">
+                <div class="card-border-top"></div>
+                <div class="img"><i class="fas fa-envelope"></i></div>
+                <span>Johan Monrroy</span>
+                <p class="job">Desarrollador Principal</p>
+                <button type="button" onclick="return window.openGmailCompose('johan16231@gmail.com')" data-i18n="btn_email">Email</button>
+              </div>
+              <div class="contact-info-card">
+                <div class="card-border-top"></div>
+                <div class="img"><i class="fa-solid fa-share-nodes"></i></div>
+                <span>LJ Code System</span>
+                <p class="job">Redes Sociales</p>
+                <div class="social-list">
+                  <a href="https://www.instagram.com/lj_codesystems?igsh=MXFsaDlrYmI0enhzYQ==" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                  <a href="https://x.com/LJ_CodeSystems" target="_blank" rel="noopener"><i class="fab fa-x-twitter"></i></a>
+                  <a href="https://www.facebook.com/share/17o7AB8Vr8/" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </section>
 
     </main>
 
@@ -491,17 +543,17 @@
         <div class="footer-content">
             <div class="about-us">
                 <h3>LJ Code System</h3>
-                <p>Desarrollamos soluciones de software a la medida para potenciar tu negocio.</p>
+                <p data-i18n="footer_desc">Desarrollamos soluciones de software a la medida para potenciar tu negocio.</p>
             </div>
             <div class="contact-us">
-                <h3>Contacto Rápido</h3>
-                <a href="mailto:ljcodesystems@gmail.com" class="contact-link">ljcodesystems@gmail.com</a>
+                <h3 data-i18n="footer_contact_title">Contacto Rápido</h3>
+                <a href="#" onclick="return window.openGmailCompose('ljcodesystems@gmail.com')" class="contact-link">ljcodesystems@gmail.com</a>
                 <a href="https://wa.me/573107547938" target="_blank" class="contact-link">WhatsApp: +57 3107547938</a>
                 <a href="https://wa.me/573108755624" target="_blank" class="contact-link">WhatsApp: +57 3108755624</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 LJ Code System. Todos los derechos reservados.</p>
+            <p data-i18n="footer_rights">&copy; 2024 LJ Code System. Todos los derechos reservados.</p>
         </div>
     </footer>
 
