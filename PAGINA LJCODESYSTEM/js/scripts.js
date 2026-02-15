@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Populate modal
                     modalBody.innerHTML = `<h3>${name}</h3>${info}`;
                     
+                    // Re-apply translations for the new modal content
+                    applyTranslations();
+                    
                     // Show modal
                     developerModal.classList.add('show');
                 } else {
@@ -41,6 +44,62 @@ document.addEventListener('DOMContentLoaded', () => {
         developerModal.addEventListener('click', (e) => {
             if (e.target === developerModal) {
                 developerModal.classList.remove('show');
+            }
+        });
+    }
+
+    // Project Modal Logic
+    const projectModal = document.getElementById('project-modal');
+    const projectModalBody = document.getElementById('project-modal-body');
+    const closeProjectModal = document.querySelector('.close-modal-project');
+    const projectDetailBtns = document.querySelectorAll('.project-details-btn');
+
+    if (projectDetailBtns.length > 0) {
+        projectDetailBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const card = btn.closest('.project-card');
+                const nameElement = card.querySelector('h3');
+                const infoElement = card.querySelector('.project-info-hidden');
+
+                if (nameElement && infoElement && projectModalBody && projectModal) {
+                    const name = nameElement.textContent;
+                    const info = infoElement.innerHTML;
+                    const liveUrl = card.getAttribute('data-live');
+                    
+                    // Populate modal
+                    let modalContent = `<h3>${name}</h3>${info}`;
+                    
+                    if (liveUrl) {
+                        modalContent += `
+                            <a href="${liveUrl}" target="_blank" rel="noopener noreferrer" class="portfolio-link">
+                                <i class="fas fa-external-link-alt"></i> <span data-i18n="see_page">Ver página</span>
+                            </a>
+                        `;
+                    }
+
+                    projectModalBody.innerHTML = modalContent;
+                    
+                    // Re-apply translations for the new modal content
+                    applyTranslations();
+                    
+                    // Show modal
+                    projectModal.classList.add('show');
+                }
+            });
+        });
+    }
+
+    if (closeProjectModal && projectModal) {
+        closeProjectModal.addEventListener('click', () => {
+            projectModal.classList.remove('show');
+        });
+    }
+
+    if (projectModal) {
+        projectModal.addEventListener('click', (e) => {
+            if (e.target === projectModal) {
+                projectModal.classList.remove('show');
             }
         });
     }
@@ -186,8 +245,23 @@ document.addEventListener('DOMContentLoaded', () => {
             dev_prompt: 'Haz clic para ver info',
             see_more: 'Ver más',
             see_less: 'Ver menos',
+            see_page: 'Ver página',
             in_dev: 'En desarrollo',
-            proj1_desc: 'Plataforma de torneos de fútbol online'
+            proj1_desc: 'Plataforma de torneos de fútbol online',
+            footer_desc: 'Desarrollamos soluciones de software a la medida para potenciar tu negocio.',
+            footer_contact_title: 'Contacto Rápido',
+            footer_rights: '© 2024 LJ Code System. Todos los derechos reservados.',
+            job_main_dev: 'Desarrollador Principal',
+            job_socials: 'Redes Sociales',
+            dev_tech_title: 'Tecnologias',
+            dev_studies_title: 'Estudios',
+            dev_portfolio_btn: 'Portafolio Personal',
+            dev_job_title: 'Desarrollador',
+            btn_email: 'Email',
+            dev_leo_studies: 'Tecnólogo en Desarrollo de Software, estudiando Ing. en Desarrollo de Software',
+            dev_johan_studies: 'Tecnólogo en Desarrollo de Software',
+            dev_santiago_studies: 'Estudiando Tecnólogo en Desarrollo de Software',
+            dev_juan_studies: 'Tecnólogo en Desarrollo de Software, estudiando Ing. en Sistemas'
         },
         en: {
             nav_about: 'About Us',
@@ -205,7 +279,21 @@ document.addEventListener('DOMContentLoaded', () => {
             see_more: 'See more',
             see_less: 'See less',
             in_dev: 'In development',
-            proj1_desc: 'Online soccer tournament platform'
+            proj1_desc: 'Online soccer tournament platform',
+            footer_desc: 'We develop custom software solutions to empower your business.',
+            footer_contact_title: 'Quick Contact',
+            footer_rights: '© 2024 LJ Code System. All rights reserved.',
+            job_main_dev: 'Lead Developer',
+            job_socials: 'Social Media',
+            dev_tech_title: 'Technologies',
+            dev_studies_title: 'Studies',
+            dev_portfolio_btn: 'Personal Portfolio',
+            dev_job_title: 'Developer',
+            btn_email: 'Email',
+            dev_leo_studies: 'Software Development Technologist, studying Software Engineering',
+            dev_johan_studies: 'Software Development Technologist',
+            dev_santiago_studies: 'Studying Software Development Technology',
+            dev_juan_studies: 'Software Development Technologist, studying Systems Engineering'
         },
         pt: {
             nav_about: 'Sobre Nós',
@@ -222,6 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
             dev_prompt: 'Clique para ver info',
             see_more: 'Ver mais',
             see_less: 'Ver menos',
+            see_page: 'Ver página',
             in_dev: 'Em desenvolvimento',
             proj1_desc: 'Plataforma de torneios de futebol online',
             footer_desc: 'Desenvolvemos soluções de software sob medida para impulsionar seu negócio.',
@@ -233,7 +322,11 @@ document.addEventListener('DOMContentLoaded', () => {
             dev_studies_title: 'Estudos',
             dev_portfolio_btn: 'Portfólio Pessoal',
             dev_job_title: 'Desenvolvedor',
-            btn_email: 'Email'
+            btn_email: 'Email',
+            dev_leo_studies: 'Tecnólogo em Desenvolvimento de Software, estudando Eng. de Software',
+            dev_johan_studies: 'Tecnólogo em Desenvolvimento de Software',
+            dev_santiago_studies: 'Estudando Tecnologia em Desenvolvimento de Software',
+            dev_juan_studies: 'Tecnólogo em Desenvolvimento de Software, estudando Eng. de Sistemas'
         },
     };
 

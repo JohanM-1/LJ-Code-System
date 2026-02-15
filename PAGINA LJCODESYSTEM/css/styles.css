@@ -227,6 +227,50 @@ nav {
     50% { border-color: var(--light-blue) }
 }
 
+/* Estilos para el contenedor del logo y el borde estático neon */
+.welcome-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+    margin-top: 10px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    z-index: 1;
+    padding: 2px;
+    background: transparent;
+    /* Borde blanco estático */
+    border: 3px solid var(--white);
+    /* Efecto neon estático igual al texto LJ CODE SYSTEM */
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.4), inset 0 0 15px rgba(59, 130, 246, 0.5);
+}
+
+/* Pseudo-elemento eliminado ya que no hay animación rotativa */
+/* .welcome-logo-container::before { ... } */
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.welcome-logo-bottom {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    /* Eliminamos bordes y márgenes antiguos ya que los maneja el contenedor */
+    border: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    background-color: transparent;
+}
+
 nav ul {
     display: flex;
     list-style: none;
@@ -260,8 +304,9 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 100px); /* Full viewport height minus header */
+    min-height: calc(100vh - 120px); /* Full viewport height minus header */
     padding: 0 50px;
+    margin-bottom: 250px;
 }
 
 .welcome-content {
@@ -273,13 +318,14 @@ main {
 }
 
 .company-name-wrapper {
+    position: relative;
     animation: reveal-from-center 1s ease-in-out 0.2s forwards;
     clip-path: circle(0% at 50% 50%);
 }
 
 @keyframes reveal-from-center {
     to {
-        clip-path: circle(150% at 50% 50%);
+        clip-path: circle(500% at 50% 50%);
     }
 }
 
@@ -534,7 +580,8 @@ main {
     opacity: 1;
 }
 
-.close-modal {
+.close-modal,
+.close-modal-project {
     position: absolute;
     top: 15px;
     right: 20px;
@@ -545,27 +592,32 @@ main {
     transition: color 0.3s;
 }
 
-.close-modal:hover {
+.close-modal:hover,
+.close-modal-project:hover {
     color: var(--light-blue);
 }
 
-#modal-body h3 {
+#modal-body h3,
+#project-modal-body h3 {
     color: var(--light-blue);
     font-size: 2rem;
     margin-bottom: 20px;
 }
 
-#modal-body p {
+#modal-body p,
+#project-modal-body p {
     font-size: 1.1rem;
     margin-bottom: 15px;
     color: var(--slate);
 }
 
-#modal-body strong {
+#modal-body strong,
+#project-modal-body strong {
     color: var(--white);
 }
 
-#modal-body .portfolio-link {
+#modal-body .portfolio-link,
+#project-modal-body .portfolio-link {
     margin-top: 30px;
     display: inline-block;
     background: linear-gradient(135deg, var(--light-blue), #2980b9);
@@ -584,7 +636,8 @@ main {
     animation: glowing-button 2s infinite;
 }
 
-#modal-body .portfolio-link:hover {
+#modal-body .portfolio-link:hover,
+#project-modal-body .portfolio-link:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(100, 255, 218, 0.4);
     background: transparent;
@@ -593,12 +646,14 @@ main {
     animation-play-state: paused;
 }
 
-#modal-body .portfolio-link i {
+#modal-body .portfolio-link i,
+#project-modal-body .portfolio-link i {
     margin-right: 10px;
     transition: transform 0.3s ease;
 }
 
-#modal-body .portfolio-link:hover i {
+#modal-body .portfolio-link:hover i,
+#project-modal-body .portfolio-link:hover i {
     transform: rotate(20deg) scale(1.2);
 }
 
