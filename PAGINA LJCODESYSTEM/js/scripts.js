@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn_email: 'Email',
             dev_leo_studies: 'Tecnólogo en Desarrollo de Software, estudiando Ing. en Desarrollo de Software',
             dev_johan_studies: 'Tecnólogo en Desarrollo de Software',
-            dev_santiago_studies: 'Estudiando Tecnólogo en Desarrollo de Software',
+            dev_santiago_studies: 'Estudiando Ing. de Sistemas',
             dev_juan_studies: 'Tecnólogo en Desarrollo de Software, estudiando Ing. en Sistemas',
             frontend: 'Frontend',
             backend: 'Backend',
