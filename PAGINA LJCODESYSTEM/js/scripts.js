@@ -53,11 +53,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectModalBody = document.getElementById('project-modal-body');
     const closeProjectModal = document.querySelector('.close-modal-project');
     const projectDetailBtns = document.querySelectorAll('.project-details-btn');
+    let carouselInterval = null;
 
     if (projectDetailBtns.length > 0) {
         projectDetailBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
+                
+                // Clear any existing interval
+                if (carouselInterval) clearInterval(carouselInterval);
                 const card = btn.closest('.project-card');
                 const nameElement = card.querySelector('h3');
                 const infoElement = card.querySelector('.project-info-hidden');
@@ -67,8 +71,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     const info = infoElement.innerHTML;
                     const liveUrl = card.getAttribute('data-live');
                     
-                    // Populate modal
                     let modalContent = `<h3>${name}</h3>${info}`;
+                    
+                    // Toggle expanded class for LCG Deportivos
+                    const modalContentWrapper = projectModal.querySelector('.developer-modal-content');
+                    if (name.trim() === 'LCG Deportivos') {
+                        modalContentWrapper.classList.add('modal-expanded');
+                    } else {
+                        modalContentWrapper.classList.remove('modal-expanded');
+                    }
                     
                     if (liveUrl) {
                         modalContent += `
@@ -82,6 +93,83 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     // Re-apply translations for the new modal content
                     applyTranslations();
+
+                    // Initialize Carousel if present
+                    const carouselTrack = projectModalBody.querySelector('.carousel-track');
+                    if (carouselTrack) {
+                        const slides = Array.from(carouselTrack.children);
+                        const nextButton = projectModalBody.querySelector('.next-btn');
+                        const prevButton = projectModalBody.querySelector('.prev-btn');
+                        const dotsNav = projectModalBody.querySelector('.carousel-nav');
+                        const dots = Array.from(dotsNav.children);
+
+                        let currentSlideIndex = 0;
+
+                        const updateCarousel = (index) => {
+                            slides.forEach((slide, i) => {
+                                if (i === index) {
+                                    slide.classList.add('current-slide');
+                                    slide.style.opacity = '1';
+                                    slide.style.zIndex = '1';
+                                } else {
+                                    slide.classList.remove('current-slide');
+                                    slide.style.opacity = '0';
+                                    slide.style.zIndex = '0';
+                                }
+                            });
+                            
+                            dots.forEach((dot, i) => {
+                                if (i === index) {
+                                    dot.classList.add('current-slide');
+                                } else {
+                                    dot.classList.remove('current-slide');
+                                }
+                            });
+                        };
+
+                        // Autoplay functionality
+                        const startAutoplay = () => {
+                            carouselInterval = setInterval(() => {
+                                currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+                                updateCarousel(currentSlideIndex);
+                            }, 5000); // Change every 5 seconds
+                        };
+
+                        const stopAutoplay = () => {
+                            if (carouselInterval) clearInterval(carouselInterval);
+                        };
+
+                        const resetAutoplay = () => {
+                            stopAutoplay();
+                            startAutoplay();
+                        };
+
+                        // Start autoplay initially
+                        startAutoplay();
+
+                        if (nextButton) {
+                            nextButton.addEventListener('click', () => {
+                                currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+                                updateCarousel(currentSlideIndex);
+                                resetAutoplay();
+                            });
+                        }
+
+                        if (prevButton) {
+                            prevButton.addEventListener('click', () => {
+                                currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+                                updateCarousel(currentSlideIndex);
+                                resetAutoplay();
+                            });
+                        }
+
+                        dots.forEach((dot, index) => {
+                            dot.addEventListener('click', () => {
+                                currentSlideIndex = index;
+                                updateCarousel(currentSlideIndex);
+                            });
+                        });
+                    }
                     
                     // Show modal
                     projectModal.classList.add('show');
@@ -93,6 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeProjectModal && projectModal) {
         closeProjectModal.addEventListener('click', () => {
             projectModal.classList.remove('show');
+            if (carouselInterval) clearInterval(carouselInterval);
         });
     }
 
@@ -100,6 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         projectModal.addEventListener('click', (e) => {
             if (e.target === projectModal) {
                 projectModal.classList.remove('show');
+                if (carouselInterval) clearInterval(carouselInterval);
             }
         });
     }
@@ -250,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
             proj1_desc: 'Plataforma de torneos de fútbol online',
             footer_desc: 'Desarrollamos soluciones de software a la medida para potenciar tu negocio.',
             footer_contact_title: 'Contacto Rápido',
-            footer_rights: '© 2024 LJ Code System. Todos los derechos reservados.',
+            footer_rights: '© 2026 LJ Code System. Todos los derechos reservados.',
             job_main_dev: 'Desarrollador Principal',
             job_socials: 'Redes Sociales',
             dev_tech_title: 'Tecnologias',
@@ -261,7 +351,12 @@ document.addEventListener('DOMContentLoaded', () => {
             dev_leo_studies: 'Tecnólogo en Desarrollo de Software, estudiando Ing. en Desarrollo de Software',
             dev_johan_studies: 'Tecnólogo en Desarrollo de Software',
             dev_santiago_studies: 'Estudiando Tecnólogo en Desarrollo de Software',
-            dev_juan_studies: 'Tecnólogo en Desarrollo de Software, estudiando Ing. en Sistemas'
+            dev_juan_studies: 'Tecnólogo en Desarrollo de Software, estudiando Ing. en Sistemas',
+            frontend: 'Frontend',
+            backend: 'Backend',
+            details: 'Detalles',
+            technologies: 'Tecnologías',
+            lcg_description: 'LCG Deportivos es un espacio dedicado a la organización y administración de torneos deportivos, especialmente de fútbol. En este sitio los equipos y participantes pueden informarse sobre las competencias disponibles, conocer categorías, reglamentos y requisitos, así como realizar procesos relacionados con la inscripción de equipos y jugadores.'
         },
         en: {
             nav_about: 'About Us',
@@ -278,11 +373,12 @@ document.addEventListener('DOMContentLoaded', () => {
             dev_prompt: 'Click to see info',
             see_more: 'See more',
             see_less: 'See less',
+            see_page: 'See page',
             in_dev: 'In development',
             proj1_desc: 'Online soccer tournament platform',
             footer_desc: 'We develop custom software solutions to empower your business.',
             footer_contact_title: 'Quick Contact',
-            footer_rights: '© 2024 LJ Code System. All rights reserved.',
+            footer_rights: '© 2026 LJ Code System. All rights reserved.',
             job_main_dev: 'Lead Developer',
             job_socials: 'Social Media',
             dev_tech_title: 'Technologies',
@@ -293,7 +389,15 @@ document.addEventListener('DOMContentLoaded', () => {
             dev_leo_studies: 'Software Development Technologist, studying Software Engineering',
             dev_johan_studies: 'Software Development Technologist',
             dev_santiago_studies: 'Studying Software Development Technology',
-            dev_juan_studies: 'Software Development Technologist, studying Systems Engineering'
+            dev_juan_studies: 'Software Development Technologist, studying Systems Engineering',
+            github_repo_development: 'GitHub repository in Development',
+            repo_title: 'Repository',
+            repos_title: 'Repositories',
+            frontend: 'Frontend',
+            backend: 'Backend',
+            details: 'Details',
+            technologies: 'Technologies',
+            lcg_description: 'LCG Deportivos is a space dedicated to the organization and administration of sports tournaments, especially soccer. On this site, teams and participants can get information about available competitions, learn about categories, regulations and requirements, as well as carry out processes related to the registration of teams and players.'
         },
         pt: {
             nav_about: 'Sobre Nós',
@@ -315,7 +419,7 @@ document.addEventListener('DOMContentLoaded', () => {
             proj1_desc: 'Plataforma de torneios de futebol online',
             footer_desc: 'Desenvolvemos soluções de software sob medida para impulsionar seu negócio.',
             footer_contact_title: 'Contato Rápido',
-            footer_rights: '© 2024 LJ Code System. Todos os direitos reservados.',
+            footer_rights: '© 2026 LJ Code System. Todos os direitos reservados.',
             job_main_dev: 'Desenvolvedor Principal',
             job_socials: 'Redes Sociais',
             dev_tech_title: 'Tecnologias',
@@ -326,7 +430,15 @@ document.addEventListener('DOMContentLoaded', () => {
             dev_leo_studies: 'Tecnólogo em Desenvolvimento de Software, estudando Eng. de Software',
             dev_johan_studies: 'Tecnólogo em Desenvolvimento de Software',
             dev_santiago_studies: 'Estudando Tecnologia em Desenvolvimento de Software',
-            dev_juan_studies: 'Tecnólogo em Desenvolvimento de Software, estudando Eng. de Sistemas'
+            dev_juan_studies: 'Tecnólogo em Desenvolvimento de Software, estudando Eng. de Sistemas',
+            github_repo_development: 'Repositório GitHub em Desenvolvimento',
+            repo_title: 'Repositório',
+            repos_title: 'Repositórios',
+            frontend: 'Frontend',
+            backend: 'Backend',
+            details: 'Detalhes',
+            technologies: 'Tecnologias',
+            lcg_description: 'LCG Deportivos é um espaço dedicado à organização e administração de torneios esportivos, especialmente de futebol. Neste site, equipes e participantes podem se informar sobre as competições disponíveis, conhecer categorias, regulamentos e requisitos, além de realizar processos relacionados à inscrição de equipes e jogadores.'
         },
     };
 
@@ -369,23 +481,72 @@ document.addEventListener('DOMContentLoaded', () => {
     applyTranslations();
     
 
-    const portfolioLinks = document.querySelectorAll('.portfolio-link');
-    const popup = document.getElementById('popup-message');
+    // GitHub Button Popup Logic for specific projects (LCG, Project 2, Project 3)
+    const targetProjects = ['LCG Deportivos', 'Proyecto Dos', 'Proyecto Tres'];
+    
+    document.querySelectorAll('.project-card').forEach(card => {
+        const titleElement = card.querySelector('h3');
+        if (titleElement && targetProjects.includes(titleElement.textContent.trim())) {
+            const githubIcon = card.querySelector('.project-links .fa-github');
+            if (githubIcon) {
+                const githubBtn = githubIcon.closest('a');
+                // Remove existing listeners to avoid duplicates if this runs multiple times
+                const newGithubBtn = githubBtn.cloneNode(true);
+                githubBtn.parentNode.replaceChild(newGithubBtn, githubBtn);
+                
+                newGithubBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Clear any existing interval
+                    if (typeof carouselInterval !== 'undefined' && carouselInterval) clearInterval(carouselInterval);
 
-    if (popup) { // Check if popup exists
-        portfolioLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                popup.classList.add('show');
-            });
-        });
-
-        popup.addEventListener('click', (e) => {
-            if (e.target.id === 'popup-message') {
-                popup.classList.remove('show');
+                    if (projectModal && projectModalBody) {
+                        let modalContent = '';
+                        const projectName = titleElement.textContent.trim();
+                        
+                        if (projectName === 'LCG Deportivos') {
+                            modalContent = `
+                                <h3>${projectName}</h3>
+                                <div class="info-block" style="text-align: center; padding: 20px;">
+                                    <h4><i class="fab fa-github"></i> <span data-i18n="repos_title">Repositorios</span></h4>
+                                    <div style="display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap;">
+                                        <a href="https://github.com/LJprogram657/FrontDeportes" target="_blank" rel="noopener noreferrer" class="portfolio-link" style="margin: 0;">
+                                            <i class="fab fa-github"></i> <span data-i18n="frontend">Frontend</span>
+                                        </a>
+                                        <a href="https://github.com/LJprogram657/backenddeportes" target="_blank" rel="noopener noreferrer" class="portfolio-link" style="margin: 0;">
+                                            <i class="fab fa-github"></i> <span data-i18n="backend">Backend</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            `;
+                        } else {
+                            modalContent = `
+                                <h3>${projectName}</h3>
+                                <div class="info-block" style="text-align: center; padding: 20px;">
+                                    <h4><i class="fab fa-github"></i> <span data-i18n="repo_title">Repositorio</span></h4>
+                                    <p style="font-size: 1.1rem; margin-top: 10px;"><span data-i18n="github_repo_development">GitHub repositorio en Desarrollo</span> <i class="fas fa-tools"></i></p>
+                                </div>
+                            `;
+                        }
+                        
+                        // Remove expanded class if present
+                        const modalContentWrapper = projectModal.querySelector('.developer-modal-content');
+                        if (modalContentWrapper) {
+                            modalContentWrapper.classList.remove('modal-expanded');
+                        }
+                        
+                        projectModalBody.innerHTML = modalContent;
+                        
+                        // Re-apply translations for the new modal content
+                        applyTranslations();
+                        
+                        // Show modal
+                        projectModal.classList.add('show');
+                    }
+                });
             }
-        });
-    }
+        }
+    });
 
     // Hamburger Menu Logic
     const hamburger = document.querySelector('.hamburger-menu');
