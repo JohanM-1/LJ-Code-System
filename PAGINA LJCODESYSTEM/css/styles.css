@@ -232,43 +232,49 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 100%;
-    margin-top: 10px;
+    position: relative;
+    margin: 0 auto;
     width: 250px;
     height: 250px;
-    border-radius: 50%;
     z-index: 1;
-    padding: 2px;
     background: transparent;
-    /* Borde blanco estático */
-    border: 3px solid var(--white);
-    /* Efecto neon estático igual al texto LJ CODE SYSTEM */
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.4), inset 0 0 15px rgba(59, 130, 246, 0.5);
+    transition: all 0.5s ease;
 }
 
-/* Pseudo-elemento eliminado ya que no hay animación rotativa */
-/* .welcome-logo-container::before { ... } */
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+/* El aro con su brillo se maneja en un pseudo-elemento para que el glow no se corte */
+.welcome-logo-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    border: 4px solid var(--white);
+    border-bottom-color: transparent;
+    /* Usamos drop-shadow en lugar de box-shadow para que siga la forma del arco y no deje residuo abajo */
+    filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.8)) drop-shadow(0 0 30px rgba(59, 130, 246, 0.4));
+    pointer-events: none;
 }
 
 .welcome-logo-bottom {
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 90%; /* Ajustado ligeramente para balance visual */
+    height: 90%;
     object-fit: contain;
-    border-radius: 50%;
-    /* Eliminamos bordes y márgenes antiguos ya que los maneja el contenedor */
     border: none;
     margin: 0;
     padding: 0;
     position: relative;
     background-color: transparent;
+    z-index: 2;
+}
+
+@media (min-width: 768px) {
+    .welcome-logo-container {
+        width: 380px;
+        height: 380px;
+    }
 }
 
 nav ul {
@@ -317,38 +323,56 @@ main {
     max-width: 1200px;
 }
 
-.company-name-wrapper {
-    position: relative;
-    animation: reveal-from-center 1s ease-in-out 0.2s forwards;
-    clip-path: circle(0% at 50% 50%);
-}
-
 @keyframes reveal-from-center {
     to {
         clip-path: circle(500% at 50% 50%);
     }
 }
 
-.company-name {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 5rem;
-    font-weight: 900;
-    letter-spacing: -0.05em;
-    color: var(--white);
-    text-align: center;
-    margin: 1rem 0;
-    text-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.4); /* Glow effect */
+.company-name-wrapper {
+    position: relative;
+    animation: reveal-from-center 1s ease-in-out 0.2s forwards;
+    clip-path: circle(0% at 50% 50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
 }
 
-@media (min-width: 768px) {
-    .company-name {
-        font-size: 7rem;
-    }
+/* Estilos para el lema y la línea azul */
+.motto-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -55px; /* Subirlo un poco más para que encaje mejor en el arco */
+    z-index: 2;
+}
+
+.motto-line {
+    height: 3px;
+    width: 4rem;
+    background-color: var(--white); /* Cambiado a blanco (Punto 2 Verde) */
+    margin-bottom: 0.8rem;
+    border-radius: 9999px;
+    /* Glow igual al aro (Punto 2 Verde) */
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.9), 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.motto-text {
+    color: var(--slate-400);
+    font-weight: 500;
+    letter-spacing: 0.4em; /* Más espacio entre letras según la imagen */
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    text-align: center;
+    margin: 0;
+    opacity: 0.7;
 }
 
 .welcome-text-left,
 .welcome-text-right {
-    flex-basis: 30%;
+    flex-basis: 25%;
     padding: 30px;
     background-color: rgba(255, 255, 255, 0.05); /* bg-white/5 */
     backdrop-filter: blur(20px); /* backdrop-blur-xl */
