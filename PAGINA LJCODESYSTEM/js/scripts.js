@@ -283,6 +283,64 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    initProjectsToggle();
+    
+    const translations = {
+        es: {
+            nav_about: 'Sobre Nosotros',
+            nav_projects: 'Proyectos',
+            nav_devs: 'Desarrolladores',
+            nav_contact: 'Contacto',
+            welcome_left_h2: 'Innovación y Desarrollo a tu Medida',
+            welcome_left_p: 'Creamos soluciones de software que impulsan el crecimiento y la eficiencia de tu negocio. Desde aplicaciones web hasta sistemas complejos, nuestro equipo está listo para convertir tus ideas en realidad.',
+            welcome_right_h2: 'Compromiso y Calidad Garantizada',
+            welcome_right_p: 'Nos dedicamos a entregar productos de alta calidad, con un enfoque en la experiencia de usuario y un rendimiento excepcional. Tu éxito es nuestro principal objetivo.',
+            projects_title: 'Proyectos',
+            devs_title: 'Nuestros Desarrolladores',
+            contact_title: 'CONTACTANOS',
+            dev_prompt: 'Click para ver info',
+            see_more: 'Ver más',
+            see_less: 'Ver menos',
+            in_dev: 'En desarrollo',
+            proj1_desc: 'Plataforma de torneos de fútbol en línea'
+        },
+        en: {
+            nav_about: 'About Us',
+            nav_projects: 'Projects',
+            nav_devs: 'Developers',
+            nav_contact: 'Contact',
+            welcome_left_h2: 'Innovation and Tailored Development',
+            welcome_left_p: 'We build software solutions that boost your business growth and efficiency. From web apps to complex systems, our team turns your ideas into reality.',
+            welcome_right_h2: 'Commitment and Guaranteed Quality',
+            welcome_right_p: 'We deliver high-quality products focused on user experience and performance. Your success is our main goal.',
+            projects_title: 'My Projects',
+            devs_title: 'Our Developers',
+            contact_title: 'Contact Us',
+            dev_prompt: 'Click to view info',
+            see_more: 'See more',
+            see_less: 'See less',
+            in_dev: 'In development',
+            proj1_desc: 'Online football tournaments platform'
+        },
+        pt: {
+            nav_about: 'Sobre Nós',
+            nav_projects: 'Projetos',
+            nav_devs: 'Desenvolvedores',
+            nav_contact: 'Contato',
+            welcome_left_h2: 'Inovação e Desenvolvimento Sob Medida',
+            welcome_left_p: 'Criamos soluções de software que impulsionam o crescimento e a eficiência do seu negócio. De apps web a sistemas complexos, transformamos suas ideias em realidade.',
+            welcome_right_h2: 'Compromisso e Qualidade Garantida',
+            welcome_right_p: 'Entregamos produtos de alta qualidade, focados em experiência do usuário e desempenho. Seu sucesso é nosso principal objetivo.',
+            projects_title: 'Meus Projetos',
+            devs_title: 'Nossos Desenvolvedores',
+            contact_title: 'Contate-nos',
+            dev_prompt: 'Clique para ver info',
+            see_more: 'Ver mais',
+            see_less: 'Ver menos',
+            in_dev: 'Em desenvolvimento',
+            proj1_desc: 'Plataforma de torneios de futebol online'
+        }
+    };
 
     if (projectsToggle && projectsGrid) {
         projectsToggle.addEventListener('click', () => {
