@@ -164,9 +164,9 @@ nav {
 }
 
 .lang-switcher-container select {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(59, 130, 246, 0.2); /* Blue tint */
     color: var(--white);
-    border: 1px solid rgba(226, 232, 240, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
     border-radius: 0.5rem; /* rounded-lg */
     padding: 8px 32px 8px 12px;
     outline: none;
@@ -184,8 +184,14 @@ nav {
     font-weight: 500;
 }
 
-.lang-switcher-container select:hover {
-    background: rgba(255, 255, 255, 0.1);
+.lang-switcher-container select option {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
+
+.lang-switcher-container select:hover,
+.lang-switcher-container select:focus {
+    background: rgba(59, 130, 246, 0.3);
     border-color: var(--primary);
 }
 
@@ -221,6 +227,56 @@ nav {
     50% { border-color: var(--light-blue) }
 }
 
+/* Estilos para el contenedor del logo y el borde estático neon */
+.welcome-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 0 auto;
+    width: 250px;
+    height: 250px;
+    z-index: 1;
+    background: transparent;
+    transition: all 0.5s ease;
+}
+
+/* El aro con su brillo se maneja en un pseudo-elemento para que el glow no se corte */
+.welcome-logo-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    border: 4px solid var(--white);
+    border-bottom-color: transparent;
+    /* Usamos drop-shadow en lugar de box-shadow para que siga la forma del arco y no deje residuo abajo */
+    filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.8)) drop-shadow(0 0 30px rgba(59, 130, 246, 0.4));
+    pointer-events: none;
+}
+
+.welcome-logo-bottom {
+    display: block;
+    width: 90%; /* Ajustado ligeramente para balance visual */
+    height: 90%;
+    object-fit: contain;
+    border: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    background-color: transparent;
+    z-index: 2;
+}
+
+@media (min-width: 768px) {
+    .welcome-logo-container {
+        width: 380px;
+        height: 380px;
+    }
+}
+
 nav ul {
     display: flex;
     list-style: none;
@@ -254,8 +310,9 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 100px); /* Full viewport height minus header */
+    min-height: calc(100vh - 120px); /* Full viewport height minus header */
     padding: 0 50px;
+    margin-bottom: 250px;
 }
 
 .welcome-content {
@@ -266,37 +323,56 @@ main {
     max-width: 1200px;
 }
 
-.company-name-wrapper {
-    animation: reveal-from-center 1s ease-in-out 0.2s forwards;
-    clip-path: circle(0% at 50% 50%);
-}
-
 @keyframes reveal-from-center {
     to {
-        clip-path: circle(150% at 50% 50%);
+        clip-path: circle(500% at 50% 50%);
     }
 }
 
-.company-name {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 5rem;
-    font-weight: 900;
-    letter-spacing: -0.05em;
-    color: var(--white);
+.company-name-wrapper {
+    position: relative;
+    animation: reveal-from-center 1s ease-in-out 0.2s forwards;
+    clip-path: circle(0% at 50% 50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+/* Estilos para el lema y la línea azul */
+.motto-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -55px; /* Subirlo un poco más para que encaje mejor en el arco */
+    z-index: 2;
+}
+
+.motto-line {
+    height: 3px;
+    width: 4rem;
+    background-color: var(--white); /* Cambiado a blanco (Punto 2 Verde) */
+    margin-bottom: 0.8rem;
+    border-radius: 9999px;
+    /* Glow igual al aro (Punto 2 Verde) */
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.9), 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.motto-text {
+    color: var(--slate-400);
+    font-weight: 500;
+    letter-spacing: 0.4em; /* Más espacio entre letras según la imagen */
+    text-transform: uppercase;
+    font-size: 0.65rem;
     text-align: center;
-    margin: 1rem 0;
-    text-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.4); /* Glow effect */
-}
-
-@media (min-width: 768px) {
-    .company-name {
-        font-size: 7rem;
-    }
+    margin: 0;
+    opacity: 0.7;
 }
 
 .welcome-text-left,
 .welcome-text-right {
-    flex-basis: 30%;
+    flex-basis: 25%;
     padding: 30px;
     background-color: rgba(255, 255, 255, 0.05); /* bg-white/5 */
     backdrop-filter: blur(20px); /* backdrop-blur-xl */
@@ -528,7 +604,28 @@ main {
     opacity: 1;
 }
 
-.close-modal {
+/* Modal Expanded for LCG Deportivos */
+.developer-modal-content.modal-expanded {
+    max-width: 800px;
+    width: 95%;
+    max-height: 90vh; /* Prevent modal from being too tall */
+    overflow-y: auto; /* Allow scrolling if content is too long */
+}
+
+/* Custom Scrollbar for Modal */
+.developer-modal-content.modal-expanded::-webkit-scrollbar {
+    width: 8px;
+}
+.developer-modal-content.modal-expanded::-webkit-scrollbar-track {
+    background: rgba(0, 31, 63, 0.5);
+}
+.developer-modal-content.modal-expanded::-webkit-scrollbar-thumb {
+    background: var(--light-blue);
+    border-radius: 4px;
+}
+
+.close-modal,
+.close-modal-project {
     position: absolute;
     top: 15px;
     right: 20px;
@@ -539,27 +636,32 @@ main {
     transition: color 0.3s;
 }
 
-.close-modal:hover {
+.close-modal:hover,
+.close-modal-project:hover {
     color: var(--light-blue);
 }
 
-#modal-body h3 {
+#modal-body h3,
+#project-modal-body h3 {
     color: var(--light-blue);
     font-size: 2rem;
     margin-bottom: 20px;
 }
 
-#modal-body p {
+#modal-body p,
+#project-modal-body p {
     font-size: 1.1rem;
     margin-bottom: 15px;
     color: var(--slate);
 }
 
-#modal-body strong {
+#modal-body strong,
+#project-modal-body strong {
     color: var(--white);
 }
 
-#modal-body .portfolio-link {
+#modal-body .portfolio-link,
+#project-modal-body .portfolio-link {
     margin-top: 30px;
     display: inline-block;
     background: linear-gradient(135deg, var(--light-blue), #2980b9);
@@ -578,7 +680,8 @@ main {
     animation: glowing-button 2s infinite;
 }
 
-#modal-body .portfolio-link:hover {
+#modal-body .portfolio-link:hover,
+#project-modal-body .portfolio-link:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(100, 255, 218, 0.4);
     background: transparent;
@@ -587,12 +690,14 @@ main {
     animation-play-state: paused;
 }
 
-#modal-body .portfolio-link i {
+#modal-body .portfolio-link i,
+#project-modal-body .portfolio-link i {
     margin-right: 10px;
     transition: transform 0.3s ease;
 }
 
-#modal-body .portfolio-link:hover i {
+#modal-body .portfolio-link:hover i,
+#project-modal-body .portfolio-link:hover i {
     transform: rotate(20deg) scale(1.2);
 }
 
@@ -615,6 +720,116 @@ main {
     gap: 15px;
     margin: 15px 0;
     flex-wrap: wrap;
+}
+
+/* Project Carousel Styles */
+.project-carousel {
+    position: relative;
+    height: 400px;
+    width: 100%;
+    margin: 0 auto 30px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background: #000;
+}
+
+.carousel-track-container {
+    background: #000;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-track {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-slide.current-slide {
+    opacity: 1;
+    z-index: 1;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Shows full image */
+    display: block;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    padding: 15px;
+    border-radius: 50%;
+    transition: background 0.3s;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    background: rgba(59, 130, 246, 0.8);
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    z-index: 10;
+}
+
+.carousel-indicator {
+    border: none;
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.carousel-indicator.current-slide {
+    background: var(--light-blue);
+    transform: scale(1.2);
 }
 
 .tech-btn {
@@ -854,7 +1069,7 @@ main {
   height: 100%;
   background: linear-gradient(90deg, rgba(255,255,255,0.06) 25%, rgba(255,255,255,0.12) 37%, rgba(255,255,255,0.06) 63%);
   background-size: 400% 100%;
-  animation: shimmer 1.4s ease-in-out infinite;
+  animation: shimmer 10s ease-in-out infinite;
   border-radius: inherit;
 }
 @keyframes shimmer {
@@ -1058,6 +1273,10 @@ footer {
 .contact-info-card:hover::before {
   opacity: 1;
 }
+.contact-info-card:nth-child(1) { animation-delay: 0s; }
+.contact-info-card:nth-child(2) { animation-delay: 0.06s; }
+.contact-info-card:nth-child(3) { animation-delay: 0.12s; }
+
 
 @keyframes cardFadeIn {
   from { opacity: 0; transform: translateY(10px); }

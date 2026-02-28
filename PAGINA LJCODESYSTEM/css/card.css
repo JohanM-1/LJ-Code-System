@@ -279,18 +279,18 @@
 
 /* Glowing Elements */
 .glowing-elements {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
 .glow-1, .glow-2, .glow-3 {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background: radial-gradient(circle, rgba(92,103,255,0.4) 0%, transparent 70%);
-    opacity: 0;
-    transition: 0.5s;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(92,103,255,0.4) 0%, transparent 70%);
+  opacity: 0;
+  transition: 0.5s;
 }
 
 .glow-1 { top: -20px; left: -20px; }
@@ -298,24 +298,24 @@
 
 .dev-card:hover .glow-1,
 .dev-card:hover .glow-2 {
-    opacity: 1;
+  opacity: 1;
 }
 
 /* Particles */
 .card-particles span {
-    position: absolute;
-    background: #5c67ff;
-    border-radius: 50%;
-    opacity: 0;
-    width: 4px;
-    height: 4px;
-    animation: particleFloat 3s infinite;
+  position: absolute;
+  background: #5c67ff;
+  border-radius: 50%;
+  opacity: 0;
+  width: 4px;
+  height: 4px;
+  animation: particleFloat 3s infinite;
 }
 
 @keyframes particleFloat {
-    0% { transform: translateY(0); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateY(-50px); opacity: 0; }
+  0% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-50px); opacity: 0; }
 }
 
 .card-particles span:nth-child(1) { left: 10%; animation-delay: 0s; }
@@ -324,69 +324,83 @@
 .card-particles span:nth-child(4) { left: 90%; animation-delay: 0.5s; }
 
 .dev-card:hover .card-particles span {
-    opacity: 1;
+  opacity: 1;
 }
 
 /* Simplified hover motion */
 
 /* === SOCIAL BUTTONS === */
 .social-links {
-    position: absolute;
-    bottom: -60px;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    z-index: 210;
-    opacity: 1;
-    transform: translateY(0);
-    transition: 0.3s;
-    pointer-events: auto;
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 210;
+  opacity: 1;
+  transform: translateY(0);
+  transition: 0.3s;
+  pointer-events: auto;
 }
 
 .social-btn {
-    color: #aaa;
-    font-size: 1.4rem;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    text-decoration: none;
+  color: #aaa;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+/* New Expanded Button Style */
+.social-btn.social-btn-expanded {
+  width: auto;
+  padding: 0 15px;
+  border-radius: 20px;
+  gap: 8px;
+}
+
+.social-btn.social-btn-expanded span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .social-btn:hover {
-    color: #fff;
-    background: #5c67ff;
-    border-color: #5c67ff;
-    box-shadow: 0 0 15px rgba(92, 103, 255, 0.6);
-    transform: translateY(-3px);
+  color: #fff;
+  background: #5c67ff;
+  border-color: #5c67ff;
+  box-shadow: 0 0 15px rgba(92, 103, 255, 0.6);
+  transform: translateY(-3px);
 }
 
 /* Brand Colors */
 .social-btn.btn-github {
-    background: #24292e;
-    border-color: #24292e;
-    color: #fff;
+  background: #24292e;
+  border-color: #24292e;
+  color: #fff;
 }
 .social-btn.btn-github:hover {
-    background: #333;
-    border-color: #333;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  background: #333;
+  border-color: #333;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
 .social-btn.btn-instagram {
-    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-    border: none;
-    color: #fff;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  border: none;
+  color: #fff;
 }
 .social-btn.btn-instagram:hover {
-    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-    box-shadow: 0 0 15px rgba(214, 36, 159, 0.6);
-    transform: translateY(-3px);
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  box-shadow: 0 0 15px rgba(214, 36, 159, 0.6);
+  transform: translateY(-3px);
 }
