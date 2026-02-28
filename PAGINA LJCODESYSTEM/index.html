@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    
     <title>LJ Code System</title>
     <link rel="stylesheet" href="css/styles.css?v=1.4">
     <link rel="stylesheet" href="css/card.css">
@@ -83,7 +88,7 @@
                 <span>HSTS</span>
               </div>
               <div class="project-links">
-                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
                 <a href="#" class="project-details-btn"><i class="fas fa-external-link-alt"></i><span data-i18n="see_more">Ver más</span></a>
               </div>
               <div class="project-info-hidden" style="display: none;">
@@ -132,15 +137,15 @@
               <div class="image-skeleton" aria-label="Cargando"></div>
             </div>
             <div class="project-content">
-              <h3>Proyecto Dos</h3>
+              <h3 data-i18n="project_two">Proyecto Dos</h3>
               <p><i class="fas fa-tools" style="margin-right: 5px;"></i><span class="dev-status" data-i18n="in_dev">Proyecto en desarrollo</span><span class="dev-dots"><span></span><span></span><span></span></span></p>
               <div class="project-links">
-                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
                 <a href="#" class="project-details-btn"><i class="fas fa-external-link-alt"></i><span data-i18n="see_more">Ver más</span></a>
               </div>
               <div class="project-info-hidden" style="display: none;">
                   <div class="info-block">
-                      <h4><i class="fas fa-info-circle"></i> Detalles</h4>
+                      <h4><i class="fas fa-info-circle"></i> <span data-i18n="details">Detalles</span></h4>
                       <p><i class="fas fa-tools" style="margin-right: 5px;"></i><span class="dev-status" data-i18n="in_dev">Proyecto en desarrollo</span><span class="dev-dots"><span></span><span></span><span></span></span></p>
                   </div>
               </div>
@@ -151,15 +156,15 @@
               <div class="image-skeleton" aria-label="Cargando"></div>
             </div>
             <div class="project-content">
-              <h3>Proyecto Tres</h3>
+              <h3 data-i18n="project_three">Proyecto Tres</h3>
               <p><i class="fas fa-tools" style="margin-right: 5px;"></i><span class="dev-status" data-i18n="in_dev">Proyecto en desarrollo</span><span class="dev-dots"><span></span><span></span><span></span></span></p>
               <div class="project-links">
-                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
                 <a href="#" class="project-details-btn"><i class="fas fa-external-link-alt"></i><span data-i18n="see_more">Ver más</span></a>
               </div>
               <div class="project-info-hidden" style="display: none;">
                   <div class="info-block">
-                      <h4><i class="fas fa-info-circle"></i> Detalles</h4>
+                      <h4><i class="fas fa-info-circle"></i> <span data-i18n="details">Detalles</span></h4>
                       <p><i class="fas fa-tools" style="margin-right: 5px;"></i><span class="dev-status" data-i18n="in_dev">Proyecto en desarrollo</span><span class="dev-dots"><span></span><span></span><span></span></span></p>
                   </div>
               </div>
@@ -263,7 +268,7 @@
                   </div>
               </div>
               <div class="social-links">
-                  <a href="https://github.com/JohanM-1" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-github"></i></a>
+                  <a href="https://github.com/JohanM-1" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="fab fa-github"></i></a>
                   <a href="#" onclick="return window.openGmailCompose('johan16231@gmail.com')" class="social-btn"><i class="fas fa-envelope"></i></a>
               </div>
               <div class="developer-info-hidden" style="display: none;">
@@ -279,7 +284,7 @@
                       <h4><i class="fas fa-graduation-cap"></i> <span data-i18n="dev_studies_title">Estudios</span></h4>
                       <p data-i18n="dev_johan_studies">Tecnólogo en Desarrollo de Software</p>
                   </div>
-                  <a class="portfolio-link" href="https://johanm-1.github.io/Portfolio/" target="_blank" rel="noopener"><i class="fas fa-user-astronaut"></i> <span data-i18n="dev_portfolio_btn">Portafolio Personal</span></a>
+                  <a class="portfolio-link" href="https://johanm-1.github.io/Portfolio/" target="_blank" rel="noopener noreferrer"><i class="fas fa-user-astronaut"></i> <span data-i18n="dev_portfolio_btn">Portafolio Personal</span></a>
               </div>
           </div>
 
@@ -314,8 +319,8 @@
                   </div>
               </div>
               <div class="social-links">
-                  <a href="https://github.com/MartinezSantiago03" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-github"></i></a>
-                  <a href="https://www.instagram.com/santiagom03/" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-instagram"></i></a>
+                  <a href="https://github.com/MartinezSantiago03" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="fab fa-github"></i></a>
+                  <a href="https://www.instagram.com/santiagom03/" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="fab fa-instagram"></i></a>
                   <a href="#" onclick="return window.openGmailCompose('damh0310@gmail.com')" class="social-btn"><i class="fas fa-envelope"></i></a>
               </div>
               <div class="developer-info-hidden" style="display: none;">
@@ -459,8 +464,8 @@
             <div class="contact-us">
                 <h3 data-i18n="footer_contact_title">Contacto Rápido</h3>
                 <a href="#" onclick="return window.openGmailCompose('ljcodesystems@gmail.com')" class="contact-link">ljcodesystems@gmail.com</a>
-                <a href="https://wa.me/573107547938" target="_blank" class="contact-link">WhatsApp: +57 3107547938</a>
-                <a href="https://wa.me/573142453788" target="_blank" class="contact-link">WhatsApp: +57 3142453788</a>
+                <a href="https://wa.me/573107547938" target="_blank" rel="noopener noreferrer" class="contact-link">WhatsApp: +57 3107547938</a>
+                <a href="https://wa.me/573142453788" target="_blank" rel="noopener noreferrer" class="contact-link">WhatsApp: +57 3142453788</a>
             </div>
         </div>
         <div class="footer-bottom">
