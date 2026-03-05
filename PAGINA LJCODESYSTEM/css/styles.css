@@ -946,6 +946,10 @@ main {
   filter: grayscale(0%);
 }
 
+.project-content {
+  padding: 20px;
+}
+
 .project-content h3 {
   font-family: 'Space Grotesk', sans-serif;
   color: var(--white);
@@ -1649,7 +1653,12 @@ footer {
 @media (max-width: 768px) {
     /* 1. Ajuste de espaciado general */
     header { padding: 0 20px; }
-    #welcome { padding: 0 20px; }
+    #welcome { 
+        padding: 0 20px;
+        min-height: auto; /* Remove fixed height constraint */
+        margin-bottom: 50px; /* Significantly reduced from 250px */
+        padding-bottom: 20px; /* Minimal padding at bottom */
+    }
     #contacto { padding: 80px 20px; }
     footer { padding: 40px 20px; }
     
@@ -1666,7 +1675,10 @@ footer {
     }
     
     /* Reordenar para que el título salga primero */
-    .company-name-wrapper { order: 1; }
+    .company-name-wrapper { 
+        order: 1; 
+        margin-bottom: 50px; /* Espaciado añadido para separar del bloque de texto */
+    }
     .welcome-text-left { order: 2; margin-bottom: 20px; }
     .welcome-text-right { order: 3; }
 

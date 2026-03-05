@@ -599,22 +599,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Global function for Gmail compose popup
 window.openGmailCompose = function(email) {
-    // Usamos el enlace directo a la cuenta 0 (default) para evitar redirecciones
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+    
+    // URL estándar de Gmail para redacción
     const url = `https://mail.google.com/mail/u/0/?view=cm&fs=1&to=${email}`;
-    
-    const width = 600;
-    const height = 600;
-    
-    // Simplificamos el cálculo para que sea más rápido
-    const left = (screen.width - width) / 2;
-    const top = (screen.height - height) / 2;
-    
-    // AGREGADO CLAVE: 'noopener,noreferrer'
-    // Esto le dice al navegador: "Carga esto aparte, no esperes a mi página"
-    window.open(
-        url, 
-        '_blank', // Cambiamos el nombre a _blank para forzar nuevo proceso
-        `width=${width},height=${height},top=${top},left=${left},scrollbars=yes,resizable=yes,noopener,noreferrer`
-    );
+
+    if (isMobile) {
+        // En móviles: abrir en nueva pestaña del mismo navegador (sin preguntar por app)
+        window.open(url, '_blank', 'noopener,noreferrer');
+    } else {
+        // En escritorio: restaurar el comportamiento original de ventana emergente (Popup)
+        const width = 600;
+        const height = 600;
+        const left = (screen.width - width) / 2;
+        const top = (screen.height - height) / 2;
+        
+        window.open(
+            url, 
+            '_blank', 
+            `width=${width},height=${height},top=${top},left=${left},scrollbars=yes,resizable=yes,noopener,noreferrer`
+        );
+    }
     return false;
 };
