@@ -601,14 +601,12 @@ document.addEventListener('DOMContentLoaded', () => {
 window.openGmailCompose = function(email) {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
     
-    // URL estándar de Gmail para redacción
-    const url = `https://mail.google.com/mail/u/0/?view=cm&fs=1&to=${email}`;
-
     if (isMobile) {
-        // En móviles: abrir en nueva pestaña del mismo navegador (sin preguntar por app)
-        window.open(url, '_blank', 'noopener,noreferrer');
+        // ← ESTO ES LO NUEVO
+        window.location.href = `mailto:${email}`;
     } else {
-        // En escritorio: restaurar el comportamiento original de ventana emergente (Popup)
+        // ← ESTO SE QUEDA IGUAL QUE ANTES
+        const url = `https://mail.google.com/mail/u/0/?view=cm&fs=1&to=${email}`;
         const width = 600;
         const height = 600;
         const left = (screen.width - width) / 2;
@@ -620,5 +618,4 @@ window.openGmailCompose = function(email) {
             `width=${width},height=${height},top=${top},left=${left},scrollbars=yes,resizable=yes,noopener,noreferrer`
         );
     }
-    return false;
-};
+}
